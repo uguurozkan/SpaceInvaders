@@ -26,7 +26,7 @@ public class LevelLoader {
 	private ArrayList<char[]> readMapFile() {
 		Scanner fileScanner = null;
 		try {
-			fileScanner = new Scanner(new File("smbDemoStage.txt"));
+			fileScanner = new Scanner(new File("demoStage.txt"));
 		} catch (FileNotFoundException e) {
 			System.err.println("Couldn't read stage file");
 			System.exit(1);
@@ -38,7 +38,9 @@ public class LevelLoader {
 	private ArrayList<char[]> loopOverMapFile(Scanner fileScanner) {
 		ArrayList<char[]> charMap = new ArrayList<char[]>();
 		while(fileScanner.hasNextLine()) {
-			charMap.add(fileScanner.nextLine().toCharArray());
+			char[] c =fileScanner.nextLine().toCharArray();
+			//System.out.println(c);
+			charMap.add(c);
 		}
 		return charMap;
 	}

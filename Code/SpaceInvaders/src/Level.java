@@ -19,7 +19,7 @@ public class Level {
 	}
 
 	public String toString() {
-		return enemies.size()+"";
+		return map.toString();
 	}
 
 }
