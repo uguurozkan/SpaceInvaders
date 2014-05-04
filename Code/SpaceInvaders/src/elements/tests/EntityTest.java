@@ -18,11 +18,33 @@ public abstract class EntityTest {
 		assertEquals(0, entity.getYPos());
 	}
 
-	public void testMove() {
+	public void testMoveHorizontallyToRight() {
 		Entity entity = getEntity();
 		int x = entity.getXPos();
-		entity.move(10);
+		entity.moveHorizontally(10);
 		assertEquals(x + 10, entity.getXPos());
 	}
+	
+	public void testMoveHorizontallyToLeft() {
+		Entity entity = getEntity();
+		int x = entity.getXPos();
+		entity.moveHorizontally(-10);
+		assertEquals(x - 10, entity.getXPos());
+	}
+	
+	public void testMoveVerticallyToUp(){
+		Entity entity = getEntity();
+		int y = entity.getYPos();
+		entity.moveVertically(10);
+		assertEquals(y + 10, entity.getYPos());
+	}
+	
+	public void testMoveVerticallyToDown(){
+		Entity entity = getEntity();
+		int y = entity.getYPos();
+		entity.moveVertically(-10);
+		assertEquals(y - 10, entity.getYPos());
+	}
+	
 
 }

@@ -1,6 +1,6 @@
 package elements;
 
-public class PlayerEntity extends Entity{
+public class PlayerEntity extends Entity {
 	private Game currentGame;
 	private String playerName;
 
@@ -10,10 +10,10 @@ public class PlayerEntity extends Entity{
 		super.setXPos(xPos);
 		super.setYPos(yPos);
 	}
-	
+
 	@Override
 	public void collideWith(Entity other) {
-		if(other instanceof AlienEntity){
+		if (other instanceof AlienEntity) {
 			currentGame.notifyDeath();
 		}
 	}

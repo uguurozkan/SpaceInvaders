@@ -22,8 +22,12 @@ public abstract class Entity {
 		return this.yPos;
 	}
 
-	public void move(int delta) {
+	public void moveHorizontally(int delta) {
 		this.xPos += delta;
+	}
+	
+	public void moveVertically(int delta){
+		this.yPos += delta;
 	}
 
 }
