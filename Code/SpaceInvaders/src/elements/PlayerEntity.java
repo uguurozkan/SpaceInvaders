@@ -18,4 +18,9 @@ public class PlayerEntity extends Entity {
 		}
 	}
 
+	public void fire() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
