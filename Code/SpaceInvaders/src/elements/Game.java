@@ -1,8 +1,11 @@
 package elements;
 
+import gui.GameWindow;
+import gui.MenuPanel;
+
 public class Game {
 	public static void main(String[] args) {
-		MenuPanel menu=new MenuPanel();
+		GameWindow window=new GameWindow();
 	}
 
 	public void notifyDeath() {
