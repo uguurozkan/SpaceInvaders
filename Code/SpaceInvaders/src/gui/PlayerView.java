@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import elements.PlayerEntity;
 
 @SuppressWarnings("serial")
-public class PlayerView extends GameWindow {
+public class PlayerView extends GameFrame {
 
 	private final String SHIP_IMAGE_PATH = ""; // TODO find ship image
 
