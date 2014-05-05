@@ -48,10 +48,10 @@ public class LevelLoader {
 
 	private Level createLevel(Map map) {
 		char[][] charMap = map.getCharMap();
-		ArrayList<AlienEntity> alienEntities = new ArrayList<AlienEntity>();
+		ArrayList<Alien> alienEntities = new ArrayList<Alien>();
 		for (int row = 0; row < charMap.length; row++) {
 			for (int column = 0; column < charMap.length; column++) {
-				AlienEntity alienEntity = getEnemy(charMap[row][column], column, row);
+				Alien alienEntity = getEnemy(charMap[row][column], column, row);
 				if(alienEntity != null) {
 					alienEntities.add(alienEntity);
 				}
@@ -62,11 +62,11 @@ public class LevelLoader {
 		return level;
 	}
 
-	private AlienEntity getEnemy(char tileChar, int column, int row) {
-		AlienEntity alienEntity = null;
+	private Alien getEnemy(char tileChar, int column, int row) {
+		Alien alienEntity = null;
 		switch(tileChar) {
 		case 'x':
-			return new AlienEntity();
+			return new Alien(null, row, column);
 		}
 		return alienEntity;
 	}

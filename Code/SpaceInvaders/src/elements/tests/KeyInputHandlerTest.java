@@ -13,7 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import elements.Game;
 import elements.KeyInputHandler;
-import elements.PlayerEntity;
+import elements.Player;
 
 public class KeyInputHandlerTest {
 

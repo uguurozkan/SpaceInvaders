@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 public class KeyInputHandler extends KeyAdapter {
 	private int shipSpeed = 10;
-	private PlayerEntity player;
+	private Player player;
 	public boolean leftPressed, rightPressed, spacePressed;
 
 	public void KeyPressed(KeyEvent e) {

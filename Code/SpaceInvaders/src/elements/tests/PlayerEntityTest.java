@@ -4,13 +4,13 @@ import org.junit.Test;
 
 import elements.Entity;
 import elements.Game;
-import elements.PlayerEntity;
+import elements.Player;
 
 public class PlayerEntityTest extends EntityTest{
 
 	@Override
 	public Entity getEntity() {
-		return new PlayerEntity(new Game(), "playerName", 0, 0);
+		return new Player(new Game(), "playerName", 0, 0);
 	}
 
 }

@@ -1,33 +1,49 @@
 package elements;
 
+import java.awt.Point;
+import java.awt.Rectangle;
+
 public abstract class Entity {
 
-	public abstract void collideWith(Entity other);
+	public static final int BASE_SIZE = 32;
 
-	protected int xPos, yPos;
+	private Point location;
+	protected Rectangle bounds;
+	protected Game game;
 
-	public void setXPos(int x) {
-		this.xPos = x;
+	public Entity(Game game ,int row, int column) {
+		location = new Point(column*BASE_SIZE, row*BASE_SIZE);
+		bounds = new Rectangle(BASE_SIZE, BASE_SIZE);
+		bounds.setLocation(location);
+		this.game = game;
 	}
 
-	public void setYPos(int y) {
-		this.yPos = y;
+	public abstract void collided();
+	
+	public void changeX(double px) {
+		setLocation(location.getX() + px, location.getY());
 	}
 
-	public int getXPos() {
-		return this.xPos;
+	public void changeY(double py) {
+		setLocation(location.getX(), location.getY() + py);
 	}
 
-	public int getYPos() {
-		return this.yPos;
+	public void setLocation(Point p) {
+		location.setLocation(p);
+		bounds.setLocation(p);
 	}
 
-	public void moveHorizontally(int delta) {
-		this.xPos += delta;
+	public void setLocation(double x, double y) {
+		location.setLocation(x, y);
+		bounds.setLocation(location);
+	}
+
+	public Point getLocation() {
+		return location;
 	}
 	
-	public void moveVertically(int delta){
-		this.yPos += delta;
+	public void setGame(Game game) {
+		this.game = game;
 	}
 
 }

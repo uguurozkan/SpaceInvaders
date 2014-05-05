@@ -5,16 +5,16 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import elements.PlayerEntity;
+import elements.Player;
 
 @SuppressWarnings("serial")
 public class PlayerView extends GameFrame {
 
 	private final String SHIP_IMAGE_PATH = ""; // TODO find ship image
 
-	private PlayerEntity player;
+	private Player player;
 
-	public PlayerView(PlayerEntity player) {
+	public PlayerView(Player player) {
 		this.player = player;
 		JLabel shipLabel = new JLabel(getShipImage());
 		add(shipLabel);
