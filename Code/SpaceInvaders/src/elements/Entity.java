@@ -11,8 +11,8 @@ public abstract class Entity {
 	protected Rectangle bounds;
 	protected Game game;
 
-	public Entity(Game game, int row, int column) {
-		location = new Point(column * BASE_SIZE, row * BASE_SIZE);
+	public Entity(Game game ,int column, int row) {
+		location = new Point(column*BASE_SIZE, row*BASE_SIZE);
 		bounds = new Rectangle(BASE_SIZE, BASE_SIZE);
 		bounds.setLocation(location);
 		this.game = game;
@@ -20,11 +20,11 @@ public abstract class Entity {
 
 	public abstract void collided();
 
-	public void changeX(double px) {
+	public void moveHorizontally(double px) {
 		setLocation(location.getX() + px, location.getY());
 	}
 
-	public void changeY(double py) {
+	public void moveVertically(double py) {
 		setLocation(location.getX(), location.getY() + py);
 	}
 
