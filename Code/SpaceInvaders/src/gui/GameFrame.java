@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import elements.MenuPanel;
 
 public class GameFrame extends JFrame {
 	

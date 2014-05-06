@@ -32,15 +32,6 @@ public class KeyInputHandler extends KeyAdapter {
 
 	}
 
-	public void dummyMethod() {
-		if (leftPressed && !rightPressed)
-			player.moveHorizontally(shipSpeed);
-		else if (rightPressed && !leftPressed)
-			player.moveHorizontally(-shipSpeed);
 
-		if (spacePressed)
-			player.fire();
-
-	}
 
 }
