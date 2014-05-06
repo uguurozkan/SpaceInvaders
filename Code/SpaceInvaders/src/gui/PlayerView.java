@@ -10,7 +10,7 @@ import elements.Player;
 @SuppressWarnings("serial")
 public class PlayerView extends GameFrame {
 
-	private final String SHIP_IMAGE_PATH = ""; // TODO find ship image
+	private final String SHIP_IMAGE_PATH = "Assets/ship.jpg"; 
 
 	private Player player;
 

@@ -1,7 +1,6 @@
 package elements;
 
-public class Alien extends Entity{
-	
+public class Alien extends Entity {
 
 	public Alien(Game game, int row, int column) {
 		super(game, row, column);

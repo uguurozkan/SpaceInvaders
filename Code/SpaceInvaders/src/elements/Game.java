@@ -5,6 +5,7 @@ import gui.MenuPanel;
 
 public class Game {
 	Level level;
+
 	public static void main(String[] args) {
 		GameFrame frame = new GameFrame();
 		MenuPanel menuPanel = new MenuPanel();
@@ -14,7 +15,7 @@ public class Game {
 	public void removeAlien(Alien alien) {
 		level.removeAlien(alien);
 	}
-	
+
 	public void notifyPlayerDeath() {
 	}
 }

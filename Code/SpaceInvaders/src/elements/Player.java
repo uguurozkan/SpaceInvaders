@@ -16,7 +16,7 @@ public class Player extends Entity {
 
 	public void fire() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
