@@ -9,8 +9,8 @@ import elements.Player;
 public class PlayerEntityTest extends EntityTest{
 
 	@Override
-	public Entity getEntity() {
-		return new Player(new Game(), "playerName", 0, 0);
+	public Entity getEntity(int row, int column) {
+		return new Player(new Game(), "playerName", row, column);
 	}
 
 }
