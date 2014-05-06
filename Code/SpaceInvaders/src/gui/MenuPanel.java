@@ -40,6 +40,10 @@ public class MenuPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("game started");
+				removeAll();
+				add(new LevelScreen());
+				repaint();
+				revalidate();
 			}
 		});
 		
@@ -51,6 +55,10 @@ public class MenuPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("how to opened");
+				removeAll();
+				add(new HowToPanel());
+				repaint();
+				revalidate();
 			}
 		});
 
