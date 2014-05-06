@@ -26,6 +26,10 @@ public class GameFrame extends JFrame {
 	
 	public void setMenuPanel(MenuPanel menuPanel) {
 		this.menuPanel = menuPanel;
+		add(menuPanel);
+		setVisible(true);
+		repaint();
+		revalidate();
 	}
 	
 	public void setAboutPanel(AboutPanel aboutPanel) {
