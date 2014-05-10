@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import elements.Player;
 
 @SuppressWarnings("serial")
-public class PlayerView extends GameFrame {
+public class PlayerView extends JLabel {
 
 	private final String SHIP_IMAGE_PATH = "Assets/ship.jpg"; 
 
@@ -16,8 +16,7 @@ public class PlayerView extends GameFrame {
 
 	public PlayerView(Player player) {
 		this.player = player;
-		JLabel shipLabel = new JLabel(getShipImage());
-		add(shipLabel);
+		setIcon(getShipImage());
 		repaint();
 	}
 

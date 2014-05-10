@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,16 +12,13 @@ import javax.swing.border.Border;
 
 public class GameFrame extends JFrame {
 	
-	private final int WIDTH = 900;
-	private final int HEIGHT = 550;
-	
 	private GamePanel gamePanel;
 	private WelcomePanel welcomePanel;
 	
 	public GameFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(WIDTH, HEIGHT);
 		setLayout(new BorderLayout());
+		setResizable(false);
 		printWelcomePanel();
 	}
 	
@@ -28,6 +27,7 @@ public class GameFrame extends JFrame {
 		add(panel, BorderLayout.CENTER);
 		repaint();
 		revalidate();
+		pack();
 		setVisible(true);
 	}
 	
@@ -43,8 +43,9 @@ public class GameFrame extends JFrame {
 	
 	private void printGamePanel() {
 		if (gamePanel == null)
-			gamePanel = new GamePanel();
+			gamePanel = new GamePanel(getContentPane().getBounds());
 		printPanel(gamePanel);
+		gamePanel.strayBullet();	// this is for testing
 	}
 
 }

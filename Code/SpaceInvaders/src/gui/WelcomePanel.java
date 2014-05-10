@@ -1,11 +1,15 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class WelcomePanel extends JPanel {
+	
+	private final int WIDTH = 900;
+	private final int HEIGHT = 550;
 	
 	private GameFrame gameFrame;
 	private MenuPanel menuPanel;
@@ -15,6 +19,7 @@ public class WelcomePanel extends JPanel {
 	public WelcomePanel(GameFrame gameFrame) {
 		this.gameFrame = gameFrame;
 		setLayout(new BorderLayout());
+		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		printMenuPanel();
 	}
 	
