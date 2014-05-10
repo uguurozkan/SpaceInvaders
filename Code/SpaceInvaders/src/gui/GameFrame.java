@@ -20,16 +20,7 @@ public class GameFrame extends JFrame {
 	public GameFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(WIDTH, HEIGHT);
-		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setLayout(new BorderLayout());
-	}
-	
-	public void setAboutPanel(AboutPanel aboutPanel) {
-		this.aboutPanel = aboutPanel;
-	}
-	
-	public void setHowToPanel(HowToPanel howToPanel) {
-		this.howToPanel = howToPanel;
 	}
 	
 	public void printPanel(JPanel panel) {
@@ -41,17 +32,15 @@ public class GameFrame extends JFrame {
 	}
 	
 	public void printAboutPanel() {
-		if (aboutPanel != null)
-			printPanel(aboutPanel);
-		else
-			throw new NullPointerException("AboutPanel is null!");
+		if (aboutPanel == null)
+			aboutPanel = new AboutPanel();
+		printPanel(aboutPanel);
 	}
 	
 	public void printHowToPanel() {
-		if (howToPanel != null)
-			printPanel(howToPanel);
-		else
-			throw new NullPointerException("HowToPanel is null!");
+		if (howToPanel == null)
+			howToPanel = new HowToPanel();
+		printPanel(howToPanel);
 	}
 	
 	public void printMenuPanel() {
