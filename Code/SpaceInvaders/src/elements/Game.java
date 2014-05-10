@@ -7,8 +7,7 @@ public class Game {
 	Level level;
 
 	public static void main(String[] args) {
-		GameFrame frame = new GameFrame();
-		frame.printMenuPanel();
+		new GameFrame();
 	}
 
 	public void removeAlien(Alien alien) {

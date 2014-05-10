@@ -1,22 +1,21 @@
 package gui;
-import java.awt.Color;
-import java.awt.HeadlessException;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
-
-
+@SuppressWarnings("serial")
 public class MenuPanel extends JPanel {
-	JLabel openingPictureLabel;
 
-	public MenuPanel()  {
+	private JLabel openingPictureLabel;
+	private WelcomePanel welcomePanel;
+
+	public MenuPanel(WelcomePanel welcomePanel) {
+		this.welcomePanel = welcomePanel;
 		setLayout(null);
 		openingPictureLabel = new JLabel(new ImageIcon(
 				"Assets/Invader_Menu.jpg"));
@@ -27,44 +26,48 @@ public class MenuPanel extends JPanel {
 	}
 
 	private void addButtons() {
+		addNewButton();
+		addHowToButton();
+		addAboutButton();
+		addExitButton();
+	}
+
+	private void addNewButton() {
 		JButton newButton = makeButton("New Game", 400, 250);
 		newButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("game started");
-				removeAll();
-				add(new LevelScreen());
-				repaint();
-				revalidate();
+				welcomePanel.newGameClicked();
 			}
 		});
-		
 		add(newButton);
+	}
 
-		JButton howtoButton =makeButton("How to Play",400,300);
-		add(howtoButton);
+	private void addHowToButton() {
+		JButton howtoButton = makeButton("How to Play", 400, 300);
 		howtoButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("how to opened");
-				removeAll();
-				add(new HowToPanel());
-				repaint();
-				revalidate();
+				welcomePanel.howToClicked();
 			}
 		});
+		add(howtoButton);
+	}
 
-		JButton aboutButton = makeButton("About",400,350);
+	private void addAboutButton() {
+		JButton aboutButton = makeButton("About", 400, 350);
 		aboutButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("about Clicked");
+				welcomePanel.aboutClicked();
 			}
 		});
 		add(aboutButton);
+	}
 
-		// Exit
-		JButton exitButton =makeButton("Exit",400,400);
+	private void addExitButton() {
+		JButton exitButton = makeButton("Exit", 400, 400);
 		exitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -73,12 +76,12 @@ public class MenuPanel extends JPanel {
 		});
 		add(exitButton);
 	}
-	
-	private JButton makeButton(String label,int x, int y){
-		 JButton button=new JButton(label);
-			button.setSize(120, 25);
-			button.setLocation(x,y);
-			return button;
+
+	private JButton makeButton(String label, int x, int y) {
+		JButton button = new JButton(label);
+		button.setSize(120, 25);
+		button.setLocation(x, y);
+		return button;
 	}
 
 }

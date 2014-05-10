@@ -13,14 +13,14 @@ public class GameFrame extends JFrame {
 	private final int WIDTH = 900;
 	private final int HEIGHT = 550;
 	
-	private MenuPanel menuPanel;
-	private AboutPanel aboutPanel;
-	private HowToPanel howToPanel;
+	private GamePanel gamePanel;
+	private WelcomePanel welcomePanel;
 	
 	public GameFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(WIDTH, HEIGHT);
 		setLayout(new BorderLayout());
+		printWelcomePanel();
 	}
 	
 	public void printPanel(JPanel panel) {
@@ -31,22 +31,20 @@ public class GameFrame extends JFrame {
 		setVisible(true);
 	}
 	
-	public void printAboutPanel() {
-		if (aboutPanel == null)
-			aboutPanel = new AboutPanel();
-		printPanel(aboutPanel);
+	public void newGameClicked() {
+		printGamePanel();
 	}
 	
-	public void printHowToPanel() {
-		if (howToPanel == null)
-			howToPanel = new HowToPanel();
-		printPanel(howToPanel);
+	private void printWelcomePanel() {
+		if (welcomePanel == null)
+			welcomePanel = new WelcomePanel(this);
+		printPanel(welcomePanel);
 	}
 	
-	public void printMenuPanel() {
-		if (menuPanel == null)
-			menuPanel = new MenuPanel();
-		printPanel(menuPanel);
+	private void printGamePanel() {
+		if (gamePanel == null)
+			gamePanel = new GamePanel();
+		printPanel(gamePanel);
 	}
 
 }
