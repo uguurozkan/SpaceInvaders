@@ -14,24 +14,16 @@ import javax.swing.JRadioButton;
 
 
 public class MenuPanel extends JPanel {
-//	JPanel openningPicturePanel;
 	JLabel openingPictureLabel;
 
-
 	public MenuPanel()  {
-
-	}
-
-	public MenuPanel getMenuPanel() {
-//		openningPicturePanel = new JPanel();
-		/*openningPicturePanel.*/setLayout(null);
+		setLayout(null);
 		openingPictureLabel = new JLabel(new ImageIcon(
 				"Assets/Invader_Menu.jpg"));
 		addButtons();
 		openingPictureLabel.setSize(900, 550);
 		openingPictureLabel.setLocation(0, 0);
-		/*openningPicturePanel.*/add(openingPictureLabel);
-		return /*openningPicturePanel*/this;
+		add(openingPictureLabel);
 	}
 
 	private void addButtons() {
@@ -47,10 +39,10 @@ public class MenuPanel extends JPanel {
 			}
 		});
 		
-		/*openningPicturePanel.*/add(newButton);
+		add(newButton);
 
 		JButton howtoButton =makeButton("How to Play",400,300);
-		/*openningPicturePanel.*/add(howtoButton);
+		add(howtoButton);
 		howtoButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -69,7 +61,7 @@ public class MenuPanel extends JPanel {
 				System.out.println("about Clicked");
 			}
 		});
-		/*openningPicturePanel.*/add(aboutButton);
+		add(aboutButton);
 
 		// Exit
 		JButton exitButton =makeButton("Exit",400,400);
@@ -79,8 +71,9 @@ public class MenuPanel extends JPanel {
 				System.exit(0);
 			}
 		});
-		/*openningPicturePanel.*/add(exitButton);
+		add(exitButton);
 	}
+	
 	private JButton makeButton(String label,int x, int y){
 		 JButton button=new JButton(label);
 			button.setSize(120, 25);

@@ -8,8 +8,7 @@ public class Game {
 
 	public static void main(String[] args) {
 		GameFrame frame = new GameFrame();
-		MenuPanel menuPanel = new MenuPanel();
-		frame.setMenuPanel(menuPanel.getMenuPanel());
+		frame.printMenuPanel();
 	}
 
 	public void removeAlien(Alien alien) {

@@ -24,11 +24,6 @@ public class GameFrame extends JFrame {
 		setLayout(new BorderLayout());
 	}
 	
-	public void setMenuPanel(MenuPanel menuPanel) {
-		this.menuPanel = menuPanel;
-		printMenuPanel();
-	}
-	
 	public void setAboutPanel(AboutPanel aboutPanel) {
 		this.aboutPanel = aboutPanel;
 	}
@@ -60,10 +55,9 @@ public class GameFrame extends JFrame {
 	}
 	
 	public void printMenuPanel() {
-		if (menuPanel != null)
-			printPanel(menuPanel);
-		else
-			throw new NullPointerException("MenuPanel is null!");
+		if (menuPanel == null)
+			menuPanel = new MenuPanel();
+		printPanel(menuPanel);
 	}
 
 }
