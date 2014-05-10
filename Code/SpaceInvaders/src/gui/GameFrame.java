@@ -26,10 +26,7 @@ public class GameFrame extends JFrame {
 	
 	public void setMenuPanel(MenuPanel menuPanel) {
 		this.menuPanel = menuPanel;
-		add(menuPanel);
-		setVisible(true);
-		repaint();
-		revalidate();
+		printMenuPanel();
 	}
 	
 	public void setAboutPanel(AboutPanel aboutPanel) {
@@ -41,10 +38,11 @@ public class GameFrame extends JFrame {
 	}
 	
 	public void printPanel(JPanel panel) {
-		removeAll();
+		getContentPane().removeAll();
 		add(panel, BorderLayout.CENTER);
 		repaint();
 		revalidate();
+		setVisible(true);
 	}
 	
 	public void printAboutPanel() {
