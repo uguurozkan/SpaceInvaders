@@ -6,14 +6,13 @@ import java.util.ArrayList;
 public class Level {
 	private Map map;
 	private ArrayList<Alien> aliens;
-	private int dir;
+	
 	private int counter;
 	private static final int MAX_TIME=5;
 
 	public Level(Map map, ArrayList<Alien> aliens) {
 		this.map = map;
 		this.aliens = aliens;
-		this.dir=0;
 		counter=0;
 	}
 
