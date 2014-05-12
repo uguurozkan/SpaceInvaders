@@ -43,21 +43,8 @@ public class Level {
 		// TODO Auto-generated method stub
 		//for all aliens move horizont then down then horizontback then down
 		if(counter>=MAX_TIME){
-			if(dir==0){
-				move(1,0);
-				dir=1;
-			}
-			else if(dir==1){
-				move(0,1);
-				dir=2;
-			}
-			else if(dir==2){
-				move(-1,0);
-				dir=3;
-			}
-			else if(dir==3){
-				move(0,1);
-				dir=0;
+			for (int i = 0; i < aliens.size(); i++) {
+				aliens.get(i).move();
 			}
 			counter=0;
 		}
@@ -67,12 +54,7 @@ public class Level {
 
 	}
 
-	private void move(int x, int y) {
-		for (int i = 0; i < aliens.size(); i++) {
-			aliens.get(i).setLocation(aliens.get(i).getLocation().getX()+x*Alien.BASE_SIZE, aliens.get(i).getLocation().getY()+y*Alien.BASE_SIZE);
-		}
-
-	}
+	
 
 	public void draw(Graphics g) {
 		for (int i = 0; i < aliens.size(); i++) {
