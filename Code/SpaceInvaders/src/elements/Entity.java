@@ -1,7 +1,10 @@
 package elements;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.prefs.BackingStoreException;
 
 public abstract class Entity {
 
@@ -15,6 +18,7 @@ public abstract class Entity {
 	
 	protected int horizontalSpeed;
 	protected int verticalSpeed;
+	Color color;
 
 	public Entity(Game game ,int column, int row) {
 		location = new Point(column*BASE_SIZE, row*BASE_SIZE);
@@ -63,6 +67,11 @@ public abstract class Entity {
 	public void stop() {
 		this.horizontalSpeed = 0;
 		this.verticalSpeed = 0;
+	}
+	
+	public void draw(Graphics g){//This is just for now for test later needs to be changed to gui
+		g.setColor(this.color);
+        g.fillOval((int)(location.getX()), (int)(location.getY()),BASE_SIZE, BASE_SIZE);
 	}
 
 

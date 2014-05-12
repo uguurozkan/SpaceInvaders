@@ -1,9 +1,13 @@
 package elements;
 
+import java.awt.Color;
+
 public class Alien extends Entity {
+	
 
 	public Alien(Game game, int row, int column) {
 		super(game, row, column);
+		this.color=Color.BLUE;
 	}
 
 	@Override

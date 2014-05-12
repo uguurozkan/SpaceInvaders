@@ -7,9 +7,12 @@ import java.awt.event.KeyEvent;
 public class Controller {
 	private Game game;
 	private GameFrame gameFrame;
+	
 
 	public Controller() {
 		this.game = new Game();
+		this.gameFrame=new GameFrame(game);
+	
 	}
 
 	public void keyPressed(KeyEvent e) {

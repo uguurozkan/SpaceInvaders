@@ -9,17 +9,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import elements.Controller;
+import elements.Game;
+
 
 public class GameFrame extends JFrame {
 	
 	private GamePanel gamePanel;
 	private WelcomePanel welcomePanel;
+	Game game;
 	
-	public GameFrame() {
+	public GameFrame(Game game) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setResizable(false);
 		printWelcomePanel();
+		this.game=game;
 	}
 	
 	public void printPanel(JPanel panel) {
@@ -32,7 +37,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	public void newGameClicked() {
-		printGamePanel();
+		printGamePanel(game);
 	}
 	
 	private void printWelcomePanel() {
@@ -41,15 +46,16 @@ public class GameFrame extends JFrame {
 		printPanel(welcomePanel);
 	}
 	
-	private void printGamePanel() {
+	private void printGamePanel( Game game) {
 		if (gamePanel == null)
-			gamePanel = new GamePanel(getContentPane().getBounds());
+			gamePanel = new GamePanel(getContentPane().getBounds(),game);
 		printPanel(gamePanel);
-		gamePanel.strayBullet();	// this is for testing
+		//gamePanel.strayBullet();	// this is for testing
 	}
 	
 	public void refresh() {
-		gamePanel.refresh();
+		if(gamePanel!=null){
+		gamePanel.refresh();}
 	}
 
 }
