@@ -11,6 +11,11 @@ public abstract class Entity {
 	protected Rectangle bounds;
 	protected Game game;
 
+	protected int shipSpeed;
+	
+	protected int horizontalSpeed;
+	protected int verticalSpeed;
+
 	public Entity(Game game ,int column, int row) {
 		location = new Point(column*BASE_SIZE, row*BASE_SIZE);
 		bounds = new Rectangle(BASE_SIZE, BASE_SIZE);
@@ -41,6 +46,25 @@ public abstract class Entity {
 	public Point getLocation() {
 		return location;
 	}
+	
+	public void move(){
+		moveVertically(verticalSpeed);
+		moveHorizontally(horizontalSpeed);
+	}
+	
+	public void goRight() {
+		horizontalSpeed = shipSpeed;
+	}
+	
+	public void goLeft(){
+		horizontalSpeed = shipSpeed;
+	}
+	
+	public void stop() {
+		this.horizontalSpeed = 0;
+		this.verticalSpeed = 0;
+	}
+
 
 	public void setGame(Game game) {
 		this.game = game;

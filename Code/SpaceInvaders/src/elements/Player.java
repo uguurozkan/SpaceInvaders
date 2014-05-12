@@ -2,10 +2,10 @@ package elements;
 
 public class Player extends Entity {
 	private String playerName;
+	private final int SHIP_SPEED = 10;
 
 	public Player(Game game, String playerName, int row, int column) {
 		super(game, row, column);
-		this.game = game;
 		this.playerName = playerName;
 	}
 
@@ -15,7 +15,11 @@ public class Player extends Entity {
 	}
 
 	public void fire() {
-		// TODO Auto-generated method stub
+		// TODO wait for bullet implementation
+	}
+
+	public void stopFire() {
+		// TODO wait for bullet implementation
 
 	}
 

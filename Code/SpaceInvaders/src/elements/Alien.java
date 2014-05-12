@@ -11,4 +11,16 @@ public class Alien extends Entity {
 		game.removeAlien(this);
 	}
 
+	@Override
+	public void goRight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void goLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -4,34 +4,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyInputHandler extends KeyAdapter {
-	private int shipSpeed = 10;
-	private Player player;
-	public boolean leftPressed, rightPressed, spacePressed;
+	Controller controller;
 
-	public void KeyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_LEFT)
-			leftPressed = true;
-
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-			rightPressed = true;
-
-		if (e.getKeyCode() == KeyEvent.VK_SPACE)
-			spacePressed = true;
-
+	public void keyPressed(KeyEvent e) {
+		controller.keyPressed(e);
 	}
 
-	public void KeyReleased(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_LEFT)
-			leftPressed = false;
-
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-			rightPressed = false;
-
-		if (e.getKeyCode() == KeyEvent.VK_SPACE)
-			spacePressed = false;
-
+	public void keyReleased(KeyEvent e) {
+		controller.keyReleased(e);
 	}
-
-
 
 }

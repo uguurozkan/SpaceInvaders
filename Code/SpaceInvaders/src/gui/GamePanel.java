@@ -27,5 +27,9 @@ public class GamePanel extends JPanel {
 		add(strayBullet);
 		new Thread(strayBullet).start();
 	}
+	
+	public void refresh() {
+		//TODO Queries the game for the positions of entities and updates the screen.
+	}
 
 }

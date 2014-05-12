@@ -5,10 +5,9 @@ import gui.MenuPanel;
 
 public class Game {
 	Level level;
+	Player player;
 
-	public static void main(String[] args) {
-		new GameFrame();
-	}
+	
 
 	public void removeAlien(Alien alien) {
 		level.removeAlien(alien);
@@ -16,4 +15,32 @@ public class Game {
 
 	public void notifyPlayerDeath() {
 	}
+
+	public void moveEntities() {
+		player.move();
+	}
+	
+	public void goLeft() {
+		player.goLeft();
+	}
+
+	public void goRight() {
+		player.goRight();
+	}
+
+	public void fire() {
+		player.fire();
+	}
+
+	public void stopGoingLeft() {
+		player.stop();
+	}
+
+	public void stopGoingRight() {
+		player.stop();
+	}
+
+	public void stopFire() {
+		player.stopFire();
+	}	
 }

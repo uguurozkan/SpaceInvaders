@@ -47,5 +47,9 @@ public class GameFrame extends JFrame {
 		printPanel(gamePanel);
 		gamePanel.strayBullet();	// this is for testing
 	}
+	
+	public void refresh() {
+		gamePanel.refresh();
+	}
 
 }
