@@ -64,6 +64,10 @@ public class Game {
 	public void stopFire() {
 		player.stopFire();
 	}
+	
+	public Level getLevel() {
+		return level;
+	}
 
 	public void draw(Graphics g) {
 		//player draw();

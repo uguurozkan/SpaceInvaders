@@ -2,12 +2,14 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import elements.Alien;
 import elements.Game;
+import elements.Level;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel {
@@ -18,6 +20,7 @@ public class GamePanel extends JPanel {
 	private StatusPanel statusPanel;
 	private PlayerView playerView;
 	Game game;
+	ArrayList<AlienView> alienViews;
 
 	public GamePanel(Rectangle frameBounds,Game game) {
 		setLayout(null);
@@ -25,6 +28,7 @@ public class GamePanel extends JPanel {
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setBackground(Color.black);
 		this.game=game;
+		this.alienViews = new ArrayList<AlienView>();
 	}
 	
 	
@@ -35,15 +39,22 @@ public class GamePanel extends JPanel {
 	}
 	
 	public void refresh() {
-		//TODO Queries the game for the positions of entities and updates the screen.
-		//draw enemies;
+		for (AlienView alienView : alienViews) {
+			alienView.refresh();
+		}
 		repaint();
 	}
 	
-	public void paint(Graphics g){
-		super.paint(g);
-		this.removeAll();
-		game.draw(g);
+	public void paintAliens() {
+		Level level = game.getLevel();
+		ArrayList<Alien> aliens = level.getAliens();
+		alienViews = new ArrayList<AlienView>();
+		
+		for (Alien alien : aliens) {
+			AlienView alienView = new AlienView(alien); 
+			alienViews.add(alienView);
+			add(alienView);
+		}
 		
 	}
 

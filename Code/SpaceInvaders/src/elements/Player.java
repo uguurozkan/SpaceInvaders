@@ -5,7 +5,7 @@ public class Player extends Entity {
 	private final int SHIP_SPEED = 10;
 
 	public Player(Game game, String playerName, int row, int column) {
-		super(game, row, column);
+		super(game, row, column, "");
 		this.playerName = playerName;
 	}
 

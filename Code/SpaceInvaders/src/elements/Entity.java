@@ -1,6 +1,7 @@
 package elements;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -10,6 +11,7 @@ public abstract class Entity {
 
 	public static final int BASE_SIZE = 32;
 
+	private String imagePath; 
 	private Point location;
 	protected Rectangle bounds;
 	protected Game game;
@@ -20,11 +22,12 @@ public abstract class Entity {
 	protected int verticalSpeed;
 	Color color;
 
-	public Entity(Game game ,int column, int row) {
+	public Entity(Game game ,int column, int row, String imagePath) {
 		location = new Point(column*BASE_SIZE, row*BASE_SIZE);
 		bounds = new Rectangle(BASE_SIZE, BASE_SIZE);
 		bounds.setLocation(location);
 		this.game = game;
+		this.imagePath = imagePath;
 	}
 
 	public abstract void collided();
@@ -79,4 +82,11 @@ public abstract class Entity {
 		this.game = game;
 	}
 
+	public String getImagePath() {
+		return imagePath;
+	}
+	
+	public Dimension getSize() {
+		return bounds.getSize();
+	}
 }

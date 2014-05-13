@@ -8,7 +8,7 @@ public class Alien extends Entity {
 	int dir;
 
 	public Alien(Game game, int row, int column) {
-		super(game, row, column);
+		super(game, row, column, "Assets/Invaders/Invader1.png");
 		this.color=Color.BLUE;
 		this.dir=0;
 	}
