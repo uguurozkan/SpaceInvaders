@@ -41,8 +41,18 @@ public class GamePanel extends JPanel {
 	public void refresh() {
 		for (AlienView alienView : alienViews) {
 			alienView.refresh();
+			
 		}
 		repaint();
+	}
+	public void paintBarriers(){
+		
+			add(new Barrier(100,400));
+			add(new Barrier(150,400));
+			add(new Barrier(200,400));
+			add(new Barrier(50,400));
+			
+		
 	}
 	
 	public void paintAliens() {
@@ -55,6 +65,12 @@ public class GamePanel extends JPanel {
 			alienViews.add(alienView);
 			add(alienView);
 		}
+		
+	}
+
+
+	public void paintPlayer() {
+		add(new PlayerView(game.player));
 		
 	}
 

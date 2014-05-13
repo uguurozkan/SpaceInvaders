@@ -14,7 +14,8 @@ public class Barrier extends JLabel {
 
 	private int collisionAmount;
 
-	public Barrier() {
+	public Barrier(int x, int y) {
+		setLocation(x, y);
 		collisionAmount = 0;
 		setSize(WIDTH, HEIGHT);
 		chooseForm(collisionAmount);

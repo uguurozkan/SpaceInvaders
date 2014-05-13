@@ -18,7 +18,7 @@ public class AlienView extends JLabel {
 	public void refresh() {
 		setImage(alien.getImagePath());
 		setLocation(alien.getLocation());
-		setSize(64,32);
+		setSize(32,16);
 	}
 	
 	public void setImage(String imagePath) {

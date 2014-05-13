@@ -50,6 +50,8 @@ public class GameFrame extends JFrame {
 			gamePanel = new GamePanel(getContentPane().getBounds(), game);
 		printPanel(gamePanel);
 		gamePanel.paintAliens();
+		gamePanel.paintBarriers();
+		gamePanel.paintPlayer();
 		// gamePanel.strayBullet(); // this is for testing
 	}
 

@@ -10,13 +10,15 @@ import elements.Player;
 @SuppressWarnings("serial")
 public class PlayerView extends JLabel {
 
-	private final String SHIP_IMAGE_PATH = "Assets/ship.jpg"; 
+	private final String SHIP_IMAGE_PATH = "Assets/ship1.png"; 
 
 	private Player player;
 
 	public PlayerView(Player player) {
+		setLocation(100, 500);
 		this.player = player;
-		setIcon(getShipImage());
+		setSize(28,14);
+		setIcon(new ImageIcon(SHIP_IMAGE_PATH));
 		repaint();
 	}
 
@@ -24,6 +26,12 @@ public class PlayerView extends JLabel {
 		Image ship = new ImageIcon(SHIP_IMAGE_PATH).getImage();
 		ship = ship.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
 		return new ImageIcon(ship);
+	}
+
+	public void refresh() {
+		setLocation(player.getLocation());
+		setSize(28,14);
+		
 	}
 
 }

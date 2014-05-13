@@ -8,7 +8,7 @@ import gui.MenuPanel;
 
 public class Game {
 	Level level;
-	Player player;
+	public Player player;
 	
 	public Game(){
 		char[][] forMap=new char[30][30];//just for test
@@ -37,7 +37,6 @@ public class Game {
 	}
 
 	public void moveEntities() {
-	//	player.move();
 		level.moveAliens();
 	}
 	
