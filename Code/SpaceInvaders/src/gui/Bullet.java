@@ -1,10 +1,11 @@
 package gui;
 
 import java.awt.Color;
+import java.util.TimerTask;
 
 import javax.swing.JPanel;
 
-public class Bullet extends JPanel implements Runnable {
+public class Bullet extends JPanel {
 	
 	private static final int BULLET_WIDTH = 5;
 	private static final int BULLET_HEIGHT = 5;
@@ -21,19 +22,18 @@ public class Bullet extends JPanel implements Runnable {
 		isReached = false;
 		this.direction = direction;
 	}
-
-	@Override
-	public void run() {
-		double speed = SPEED;
-		if (direction == UP)
-			speed *= -1;
-		double yPos = getY();
-		while (!isReached) {
-			yPos += speed;
-			setBounds(getX(), (int) yPos, BULLET_WIDTH, BULLET_HEIGHT);
-			if (getY() == 0)
-				break;
-		}
+	
+	public TimerTask getAnimation() {
+		return new TimerTask() {
+			@Override
+			public void run() {
+				double speed = SPEED;
+				if (direction == UP)
+					speed *= -1;
+				if (getY() > 0)
+					setBounds(getX(), (int) (getY() + speed), BULLET_WIDTH, BULLET_HEIGHT);
+			}
+		};
 	}
 
 }
