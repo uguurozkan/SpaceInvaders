@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Timer;
 
 import javax.swing.JPanel;
 
@@ -35,7 +36,7 @@ public class GamePanel extends JPanel {
 	public void strayBullet() {
 		Bullet strayBullet = new Bullet(getWidth() / 2, getHeight() - 5, Bullet.UP);
 		add(strayBullet);
-		new Thread(strayBullet).start();
+		new Timer().schedule(strayBullet.getAnimation(), 0, 10);
 	}
 	
 	public void refresh() {
