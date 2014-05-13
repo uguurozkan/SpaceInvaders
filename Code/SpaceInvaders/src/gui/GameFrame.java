@@ -1,15 +1,8 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.awt.Rectangle;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
-
-import elements.Controller;
 import elements.Game;
 
 public class GameFrame extends JFrame {
@@ -52,7 +45,7 @@ public class GameFrame extends JFrame {
 		gamePanel.paintAliens();
 		gamePanel.paintBarriers();
 		gamePanel.paintPlayer();
-		gamePanel.strayBullet(); // this is for testing
+//		gamePanel.fireBullet(getWidth() / 2, getHeight() - 5); // this is for testing
 	}
 
 	public void refresh() {

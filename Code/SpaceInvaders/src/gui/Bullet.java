@@ -30,7 +30,7 @@ public class Bullet extends JPanel {
 				double speed = SPEED;
 				if (direction == UP)
 					speed *= -1;
-				if (getY() > 0)
+				if (getY() > -6)
 					setBounds(getX(), (int) (getY() + speed), BULLET_WIDTH, BULLET_HEIGHT);
 			}
 		};

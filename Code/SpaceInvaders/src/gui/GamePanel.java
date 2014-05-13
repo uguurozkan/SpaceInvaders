@@ -3,12 +3,16 @@ package gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Timer;
 
 import javax.swing.JPanel;
+
 import elements.Alien;
 import elements.Game;
+import elements.KeyInputHandler;
 import elements.Level;
 
 @SuppressWarnings("serial")
@@ -31,9 +35,8 @@ public class GamePanel extends JPanel {
 		this.alienViews = new ArrayList<AlienView>();
 	}
 
-	public void strayBullet() {
-		Bullet strayBullet = new Bullet(getWidth() / 2, getHeight() - 5,
-				Bullet.UP);
+	public void fireBullet(int xPos, int yPos) {
+		Bullet strayBullet = new Bullet(xPos, yPos, Bullet.UP);
 		add(strayBullet);
 		new Timer().schedule(strayBullet.getAnimation(), 0, 10);
 	}
@@ -66,7 +69,12 @@ public class GamePanel extends JPanel {
 	}
 
 	public void paintPlayer() {
-		add(new PlayerView(game.player));
+		if (playerView == null)
+			playerView = new PlayerView(game.player);
+		add(playerView);
+		playerView.requestFocus();
+		playerView.requestFocusInWindow();
+		playerView.addKeyListener(new KeyInputHandler(playerView, this));
 	}
 
 }
