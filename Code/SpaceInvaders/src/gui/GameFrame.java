@@ -52,7 +52,7 @@ public class GameFrame extends JFrame {
 		gamePanel.paintAliens();
 		gamePanel.paintBarriers();
 		gamePanel.paintPlayer();
-		// gamePanel.strayBullet(); // this is for testing
+		gamePanel.strayBullet(); // this is for testing
 	}
 
 	public void refresh() {
