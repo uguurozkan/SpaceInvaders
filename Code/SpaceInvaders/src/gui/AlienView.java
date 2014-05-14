@@ -1,28 +1,27 @@
 package gui;
 
-import java.awt.Color;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import elements.Alien;
 
-public class AlienView extends JLabel {
-	Alien alien;
+public class AlienView extends EntityView {
 	String path = "Assets/Invaders/Invader1.png";
 
 	public AlienView(Alien alien) {
-		this.alien = alien;
+		super(alien);
+	}
+
+
+	@Override
+	public void collide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	public void refresh() {
-		setImage(alien.getImagePath());
-		setLocation(alien.getLocation());
-		setSize(32,16);
-	}
-	
-	public void setImage(String imagePath) {
-		setIcon(new ImageIcon(imagePath));
-	}	
 
 }

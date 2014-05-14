@@ -10,31 +10,25 @@ import javax.swing.JPanel;
 import elements.Player;
 
 @SuppressWarnings("serial")
-public class PlayerView extends JPanel {
+public class PlayerView extends EntityView {
 
-	private final String SHIP_IMAGE_PATH = "Assets/ship1.png"; 
-
-	private Player player;
 
 	public PlayerView(Player player) {
-		setLocation(100, 500);
+		super(player);
+		setLocation(320, 608);
 		setFocusable(true);
-		this.player = player;
-		setBackground(Color.black);
-		setSize(28,14);
-		add(new JLabel(new ImageIcon(SHIP_IMAGE_PATH)));
-		repaint();
+
+	}
+	@Override
+	public void collide() {
+		// TODO Auto-generated method stub
+		
 	}
 
-	private ImageIcon getShipImage() {
-		Image ship = new ImageIcon(SHIP_IMAGE_PATH).getImage();
-		ship = ship.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-		return new ImageIcon(ship);
-	}
 
-	public void refresh() {
-		setLocation(player.getLocation());
-		setSize(28,14);
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
 		
 	}
 

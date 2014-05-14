@@ -5,26 +5,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LevelLoader {
-	public static void main(String[] args){
-		System.out.println(new LevelLoader().loadLevel());
-	}
-
-	public Level loadLevel() {
-		Map map = createMap();
-		Level level = createLevel(map);
+	
+	public static Level loadLevel(int x) {
+		Level level = createLevel(x);
 		return level;
 	}
 
-	private Map createMap() {
+	private static ArrayList<char[]> createMap(int x) {
 		ArrayList<char[]> charList = readMapFile();
 		char[][] tileChars = new char[charList.size()][];
 		for (int row = 0; row<tileChars.length; row++) {
 			tileChars[row] = charList.get(row);
 		}
-		return new Map(tileChars);
+		return charList;
 	}
 
-	private ArrayList<char[]> readMapFile() {
+	private static ArrayList<char[]> readMapFile() {
 		Scanner fileScanner = null;
 		try {
 			fileScanner = new Scanner(new File("demoStage.txt"));
@@ -36,38 +32,46 @@ public class LevelLoader {
 		return loopOverMapFile(fileScanner);
 	}
 
-	private ArrayList<char[]> loopOverMapFile(Scanner fileScanner) {
+	private static ArrayList<char[]> loopOverMapFile(Scanner fileScanner) {
 		ArrayList<char[]> charMap = new ArrayList<char[]>();
 		while(fileScanner.hasNextLine()) {
 			char[] c =fileScanner.nextLine().toCharArray();
-			//System.out.println(c);
 			charMap.add(c);
 		}
 		return charMap;
 	}
 
-	private Level createLevel(Map map) {
-		char[][] charMap = map.getCharMap();
+	private static Level createLevel(int x) {
+		ArrayList<char[]> charMap = createMap(x);
 		ArrayList<Alien> alienEntities = new ArrayList<Alien>();
-		for (int row = 0; row < charMap.length; row++) {
-			for (int column = 0; column < charMap.length; column++) {
-				Alien alienEntity = getEnemy(charMap[row][column], column, row);
-				if(alienEntity != null) {
-					alienEntities.add(alienEntity);
+		ArrayList<Barrier>barrierEntities = new ArrayList<Barrier>();
+		for (int row = 0; row < charMap.size(); row++) {
+			for (int column = 0; column < charMap.get(0).length; column++) {
+				Entity entity = getEntity(charMap.get(row)[column], row, column);
+				if(entity != null) {
+					if(entity instanceof Alien)
+						alienEntities.add((Alien) entity);
+					else
+						barrierEntities.add((Barrier) entity);
 				}
 			}
 		}
 
-		Level level = new Level(map, alienEntities);
+		Level level = new Level();
+		level.setAlliens(alienEntities);
+		level.setBarriers(barrierEntities);
 		return level;
 	}
 
-	private Alien getEnemy(char tileChar, int column, int row) {
-		Alien alienEntity = null;
+	private static Entity getEntity(char tileChar, int row, int column) {
+		Entity entity = null;
 		switch(tileChar) {
 		case 'x':
-			return new Alien(null, row, column);
+			return new Alien(row, column);
+		case 'b':
+			return new Barrier(row, column);
 		}
-		return alienEntity;
+		return entity;
 	}
+	
 }

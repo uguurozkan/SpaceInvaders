@@ -1,21 +1,18 @@
 package elements;
 
-import java.awt.Color;
-
 
 
 public class Alien extends Entity {
 	int dir;
 
-	public Alien(Game game, int row, int column) {
-		super(game, row, column, "Assets/Invaders/Invader1.png");
-		this.color=Color.BLUE;
+	public Alien(int row, int column) {
+		super(row, column);
 		this.dir=0;
 	}
 
 	@Override
-	public void collided() {
-		game.removeAlien(this);
+	public boolean collided() {
+		return true;
 	}
 
 	@Override
@@ -49,6 +46,11 @@ public class Alien extends Entity {
 			goDown();
 			dir=0;
 		}
+	}
+
+	@Override
+	public String getImagePath() {
+		return "Assets/Invaders/Invader1.png";
 	}
 
 	

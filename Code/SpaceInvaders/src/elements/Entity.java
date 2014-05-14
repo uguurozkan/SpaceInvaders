@@ -1,36 +1,32 @@
 package elements;
 
-import java.awt.Color;
+import gui.GameFrame;
+import gui.GamePanel;
+
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.prefs.BackingStoreException;
 
 public abstract class Entity {
 
 	public static final int BASE_SIZE = 32;
+	
 
-	private String imagePath; 
 	private Point location;
 	protected Rectangle bounds;
-	protected Game game;
 
 	protected int shipSpeed;
 	
 	protected int horizontalSpeed;
 	protected int verticalSpeed;
-	Color color;
-
-	public Entity(Game game ,int column, int row, String imagePath) {
-		location = new Point(column*BASE_SIZE, row*BASE_SIZE);
+	
+	public Entity(int row, int column) {
+		location = new Point(column*BASE_SIZE ,row*BASE_SIZE);
 		bounds = new Rectangle(BASE_SIZE, BASE_SIZE);
 		bounds.setLocation(location);
-		this.game = game;
-		this.imagePath = imagePath;
 	}
 
-	public abstract void collided();
+	public abstract boolean collided();
 
 	public void moveHorizontally(double px) {
 		setLocation(location.getX() + px, location.getY());
@@ -71,20 +67,10 @@ public abstract class Entity {
 		this.horizontalSpeed = 0;
 		this.verticalSpeed = 0;
 	}
+
+
+	public abstract String getImagePath();
 	
-	public void draw(Graphics g){//This is just for now for test later needs to be changed to gui
-		g.setColor(this.color);
-        g.fillOval((int)(location.getX()), (int)(location.getY()),BASE_SIZE, BASE_SIZE);
-	}
-
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
-
-	public String getImagePath() {
-		return imagePath;
-	}
 	
 	public Dimension getSize() {
 		return bounds.getSize();

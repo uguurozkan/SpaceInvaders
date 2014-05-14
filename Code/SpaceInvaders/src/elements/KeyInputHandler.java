@@ -19,7 +19,7 @@ public class KeyInputHandler extends KeyAdapter {
 		this.gamePanel = gamePanel;
 	}
 
-	public void keyReleased(KeyEvent e) {
+	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)
 			playerView.setLocation(playerView.getX() - 5, playerView.getY());
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT)

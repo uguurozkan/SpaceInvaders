@@ -1,22 +1,25 @@
 package gui;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import elements.Game;
+
+import elements.Controller;
+import elements.Level;
 
 public class GameFrame extends JFrame {
 
 	private GamePanel gamePanel;
 	private WelcomePanel welcomePanel;
-	Game game;
+	private Controller controller;
 
-	public GameFrame(Game game) {
+	public GameFrame(Controller controller) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setResizable(false);
 		printWelcomePanel();
-		this.game = game;
+		this.controller = controller;
 	}
 
 	public void printPanel(JPanel panel) {
@@ -29,7 +32,7 @@ public class GameFrame extends JFrame {
 	}
 
 	public void newGameClicked() {
-		printGamePanel(game);
+		printGamePanel(controller.getLevel());
 	}
 
 	private void printWelcomePanel() {
@@ -38,20 +41,14 @@ public class GameFrame extends JFrame {
 		printPanel(welcomePanel);
 	}
 
-	private void printGamePanel(Game game) {
+	private void printGamePanel(Level level) {
 		if (gamePanel == null)
-			gamePanel = new GamePanel(getContentPane().getBounds(), game);
+			gamePanel = new GamePanel(level);
 		printPanel(gamePanel);
 		gamePanel.paintAliens();
 		gamePanel.paintBarriers();
-		gamePanel.paintPlayer();
+		gamePanel.paintPlayer(controller.getPlayer());
 //		gamePanel.fireBullet(getWidth() / 2, getHeight() - 5); // this is for testing
-	}
-
-	public void refresh() {
-		if (gamePanel != null) {
-			gamePanel.refresh();
-		}
 	}
 
 }
