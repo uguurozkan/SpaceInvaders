@@ -75,10 +75,7 @@ public class GamePanel extends JPanel {
 				try {
 					if (entityView.collide(bullet.getLocation())) {
 						entityViews.remove(entityView);
-						remove(bullet);
-						bullets.remove(bullet);
-						repaint();
-						revalidate();
+						removeBullet(bullet);
 					}
 				} catch (Exception e) {
 					continue;
@@ -89,16 +86,20 @@ public class GamePanel extends JPanel {
 				if (bullet.isInsidePanel())
 					bullet.move();
 				else {
-					remove(bullet);
-					bullets.remove(bullet);
-					repaint();
-					revalidate();
+					removeBullet(bullet);
 				}
 			} catch (Exception e) {
 				continue;
 			}
 
 		}
+	}
+
+	private void removeBullet(Bullet bullet) {
+		remove(bullet);
+		bullets.remove(bullet);
+		repaint();
+		revalidate();
 	}
 
 }
