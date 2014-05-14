@@ -1,8 +1,5 @@
 package elements;
 
-import gui.GameFrame;
-import gui.GamePanel;
-
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -44,6 +41,9 @@ public abstract class Entity {
 	public void setLocation(double x, double y) {
 		location.setLocation(x, y);
 		bounds.setLocation(location);
+	}
+	public boolean inBounds(Point point){
+		return bounds.contains(point);
 	}
 
 	public Point getLocation() {

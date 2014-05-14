@@ -1,5 +1,8 @@
 package gui;
 
+import java.awt.Color;
+import java.awt.Point;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -13,7 +16,15 @@ public abstract class EntityView extends JLabel {
 		setSize(entity.getSize());
 		setIcon(new ImageIcon(entity.getImagePath()));
 	}
-	public abstract void collide();
+	public boolean collide(Point point){
+		if(entity.inBounds(point)){
+			setIcon(null);
+			setBackground(Color.BLACK);
+			return true;
+		}else 
+			return false;
+
+	}
 	public abstract void move();
 
 }

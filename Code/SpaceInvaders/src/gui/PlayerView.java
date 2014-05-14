@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Point;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,12 +20,7 @@ public class PlayerView extends EntityView {
 		setFocusable(true);
 
 	}
-	@Override
-	public void collide() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 
 	@Override
 	public void move() {

@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.Point;
+
 import elements.Alien;
 
 public class AlienView extends EntityView {
@@ -11,17 +13,12 @@ public class AlienView extends EntityView {
 
 
 	@Override
-	public void collide() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
 	public void move() {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	
 
 }

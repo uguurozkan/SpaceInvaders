@@ -10,31 +10,30 @@ public class Bullet extends JPanel {
 
 	private static final int BULLET_WIDTH = 5;
 	private static final int BULLET_HEIGHT = 5;
-	private static final double SPEED = 0.00001;
+	private static final int SPEED = 2;
 	public static final boolean DOWN = false;
 	public static final boolean UP = true;
 
-	private boolean isReached;
 	private boolean direction;
 	private int second;
-	private final static int FREQ = 3;
+	private final static int FREQ = 2;
 
 	public Bullet(int xPos, int yPos, boolean direction) {
 		setBackground(Color.red);
 		setBounds(xPos, yPos, BULLET_WIDTH, BULLET_HEIGHT);
-		isReached = false;
 		this.direction = direction;
 	}
 
-
+	public boolean isInsidePanel(){
+		return getY()>0;
+	}
 	public void move() {
 		second++;
 		if(second==FREQ){
 			double speed = SPEED;
 			if (direction == UP)
 				speed *= -1;
-			if (getY() > -6)
-				setLocation(getX(), (int) (getY() + speed));
+			setLocation(getX(), (int) (getY() + speed));
 			second =0;
 			repaint();
 			revalidate();

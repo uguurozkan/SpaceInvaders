@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.Point;
+
 import elements.Barrier;
 
 public class BarrierView extends EntityView {
@@ -8,13 +10,12 @@ public class BarrierView extends EntityView {
 		super(barrier);
 	}
 
-	public void collide() {
-
-	}
-
 	@Override
 	public void move() {
-
+		// TODO Auto-generated method stub
+		
 	}
+
+
 
 }

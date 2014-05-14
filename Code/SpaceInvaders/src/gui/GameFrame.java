@@ -1,6 +1,9 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Timer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,6 +36,7 @@ public class GameFrame extends JFrame {
 
 	public void newGameClicked() {
 		printGamePanel(controller.getLevel());
+		
 	}
 
 	private void printWelcomePanel() {
@@ -48,7 +52,21 @@ public class GameFrame extends JFrame {
 		gamePanel.paintAliens();
 		gamePanel.paintBarriers();
 		gamePanel.paintPlayer(controller.getPlayer());
-//		gamePanel.fireBullet(getWidth() / 2, getHeight() - 5); // this is for testing
+		run();
+		//		gamePanel.fireBullet(getWidth() / 2, getHeight() - 5); // this is for testing
+	}
+
+	public void run() {
+		ActionListener a = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gamePanel.run();
+				
+			}
+		};
+		new javax.swing.Timer(5, a).start();
+
 	}
 
 }
