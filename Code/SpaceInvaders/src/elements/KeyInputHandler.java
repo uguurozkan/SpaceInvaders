@@ -21,9 +21,9 @@ public class KeyInputHandler extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)
-			playerView.setLocation(playerView.getX() - 5, playerView.getY());
+			playerView.setLocation(playerView.getX() - 10, playerView.getY());
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-			playerView.setLocation(playerView.getX() + 5, playerView.getY());
+			playerView.setLocation(playerView.getX() + 10, playerView.getY());
 		if (e.getKeyCode() == KeyEvent.VK_SPACE)
 			gamePanel.fireBullet(playerView.getX() + playerView.getWidth() / 2, playerView.getY() - 5);
 		

@@ -1,13 +1,5 @@
 package gui;
 
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Point;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import elements.Player;
 
 @SuppressWarnings("serial")
