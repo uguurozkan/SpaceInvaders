@@ -8,28 +8,27 @@ public class Level {
 
 
 	public Level() {
-
+		aliens = new ArrayList<Alien>();
+		barriers = new ArrayList<Barrier>();
 	}
 	
 	public ArrayList<Alien> getAliens() {
 		return aliens;
+	}
+	
+	public ArrayList<Barrier> getBarriers(){
+		return barriers;
 	}
 
 	public void removeAlien(Alien alien) {
 		aliens.remove(alien);
 	}
 
-	
-
-	public void setAlliens(ArrayList<Alien> alienEntities) {
-		this.aliens = alienEntities;
+	public void addAllien(Alien alien) {
+		aliens.add(alien);
 	}
 
-	public void setBarriers(ArrayList<Barrier> barrierEntities) {
-		this.barriers = barrierEntities;
+	public void addBarrier(Barrier barrier) {
+		barriers.add(barrier);
 	}
-	public ArrayList<Barrier> getBarriers(){
-		return barriers;
-	}
-
 }

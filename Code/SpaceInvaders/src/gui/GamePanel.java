@@ -2,17 +2,15 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Point;
-import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.swing.JPanel;
 
 import elements.Alien;
 import elements.Barrier;
-import elements.Entity;
 import elements.KeyInputHandler;
 import elements.Level;
+import elements.LevelLoader;
 import elements.Player;
 
 @SuppressWarnings("serial")
@@ -27,12 +25,12 @@ public class GamePanel extends JPanel {
 	CopyOnWriteArrayList<EntityView> entityViews;
 	CopyOnWriteArrayList<Bullet> bullets;
 
-	public GamePanel(Level level) {
+	public GamePanel() {
 		setLayout(null);
 		setSize(WIDTH, HEIGHT);
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setBackground(Color.black);
-		this.level = level;
+		level = LevelLoader.getInstance().loadNextLevel();
 		this.entityViews = new CopyOnWriteArrayList<EntityView>();
 		bullets = new CopyOnWriteArrayList<Bullet>();
 	}

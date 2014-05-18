@@ -7,7 +7,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyInputHandler extends KeyAdapter {
-	Controller controller;
 	PlayerView playerView;
 	
 	private GamePanel gamePanel;

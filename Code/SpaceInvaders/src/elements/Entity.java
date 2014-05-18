@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 public abstract class Entity {
 
 	public static final int BASE_SIZE = 32;
-	
 
 	private Point location;
 	protected Rectangle bounds;
@@ -16,6 +15,15 @@ public abstract class Entity {
 	
 	protected int horizontalSpeed;
 	protected int verticalSpeed;
+	
+	public static Entity getEntity(char tileChar, int row, int col) {
+		if (tileChar == 'x')
+			return new Alien(row, col);
+		else if (tileChar == 'b')
+			return new Barrier(row, col);
+		else
+			return null;
+	}
 	
 	public Entity(int row, int column) {
 		location = new Point(column*BASE_SIZE ,row*BASE_SIZE);
@@ -68,9 +76,7 @@ public abstract class Entity {
 		this.verticalSpeed = 0;
 	}
 
-
 	public abstract String getImagePath();
-	
 	
 	public Dimension getSize() {
 		return bounds.getSize();
