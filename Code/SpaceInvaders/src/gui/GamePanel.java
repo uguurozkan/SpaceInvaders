@@ -19,7 +19,6 @@ public class GamePanel extends JPanel {
 	public static final int WIDTH = 640;
 	public static int HEIGHT = 640;
 
-	private StatusPanel statusPanel;
 	private PlayerView playerView;
 	private Level level;
 	CopyOnWriteArrayList<EntityView> entityViews;
