@@ -3,49 +3,15 @@ package elements;
 
 
 public class Alien extends Entity {
-	int dir;
-
+	private int counter = 0;
+	private int limit = 150;
+	private int dir = 1;
+	
+	
 	public Alien(int row, int column) {
 		super(row, column);
-		this.dir=0;
-	}
-
-	@Override
-	public boolean collided() {
-		return true;
-	}
-
-	@Override
-	public void goRight() {
-			this.setLocation(this.getLocation().getX()+1*Entity.BASE_SIZE, this.getLocation().getY());
-		}
-
-	@Override
-	public void goLeft() {
-		this.setLocation(this.getLocation().getX()-1*Entity.BASE_SIZE, this.getLocation().getY());
-		
-	}
-	private void goDown() {
-		this.setLocation(this.getLocation().getX(), this.getLocation().getY()+1*Entity.BASE_SIZE);
-		
-	}
-	public void move(){
-		if(dir==0){
-			goRight();
-			dir=1;
-		}
-		else if(dir==1){
-			goDown();
-			dir=2;
-		}
-		else if(dir==2){
-			goLeft();
-			dir=3;
-		}
-		else if(dir==3){
-			goDown();
-			dir=0;
-		}
+		setSpeed(1);
+		health = 1;
 	}
 
 	@Override
@@ -53,6 +19,17 @@ public class Alien extends Entity {
 		return "Assets/Invaders/Invader1.png";
 	}
 
-	
+	public void move() {
+		if(counter == limit || counter == -limit) {
+			dir *= -1;
+		}
+		counter += dir;
+		if(dir == -1) {
+			goLeft();
+		} else {
+			goRight();
+		}
+		super.move();
+	}
 
 }

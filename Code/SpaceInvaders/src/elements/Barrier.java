@@ -4,11 +4,8 @@ public class Barrier extends Entity {
 
 	public Barrier(int column,int row) {
 		super(column, row);
-	}
-
-	@Override
-	public boolean collided() {
-		return true;
+		setSpeed(0);
+		health = 2;
 	}
 
 	@Override

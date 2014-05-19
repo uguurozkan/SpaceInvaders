@@ -9,27 +9,26 @@ import java.awt.event.KeyEvent;
 public class KeyInputHandler extends KeyAdapter {
 	PlayerView playerView;
 
-	private GamePanel gamePanel;
-	private boolean rightPressed = false;
-	private boolean leftPressed = false;
-
-	public KeyInputHandler(PlayerView playerView, GamePanel gamePanel) {
+	public KeyInputHandler(PlayerView playerView) {
 		this.playerView = playerView;
-		this.gamePanel = gamePanel;
 	}
 
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_LEFT)
-			if(playerView.getX()-10>0){
-				playerView.setLocation(playerView.getX() - 10, playerView.getY());}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-			if(playerView.getX()+10+playerView.getWidth() < gamePanel.getWidth()){
-				playerView.setLocation(playerView.getX() + 10, playerView.getY());}
-		if (e.getKeyCode() == KeyEvent.VK_SPACE)
-			gamePanel.fireBullet(playerView.getX() + playerView.getWidth() / 2, playerView.getY() - 5);
-
-		playerView.repaint();
-		playerView.revalidate();
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			playerView.goLeft();
+		} else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			playerView.goRight();
+		} else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+			playerView.fire();
+		}
+	}
+	
+	public void keyReleased(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			playerView.stopLeft();
+		} else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			playerView.stopRight();
+		}
 	}
 
 }

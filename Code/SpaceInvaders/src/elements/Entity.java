@@ -11,11 +11,13 @@ public abstract class Entity {
 	private Point location;
 	protected Rectangle bounds;
 
-	protected int shipSpeed;
+	protected int speed;
 	
+	protected int health;
+
 	protected int horizontalSpeed;
 	protected int verticalSpeed;
-	
+
 	public static Entity getEntity(char tileChar, int row, int col) {
 		if (tileChar == 'x')
 			return new Alien(row, col);
@@ -24,14 +26,16 @@ public abstract class Entity {
 		else
 			return null;
 	}
-	
+
 	public Entity(int row, int column) {
-		location = new Point(column*BASE_SIZE ,row*BASE_SIZE);
+		location = new Point(column * BASE_SIZE, row * BASE_SIZE);
 		bounds = new Rectangle(BASE_SIZE, BASE_SIZE);
 		bounds.setLocation(location);
 	}
 
-	public abstract boolean collided();
+	public boolean intersects(Entity entity) {
+		return bounds.intersects(entity.getBounds());
+	}
 
 	public void moveHorizontally(double px) {
 		setLocation(location.getX() + px, location.getY());
@@ -50,35 +54,64 @@ public abstract class Entity {
 		location.setLocation(x, y);
 		bounds.setLocation(location);
 	}
-	public boolean inBounds(Point point){
-		return bounds.contains(point);
+
+	public boolean intersects(Rectangle r) {
+		return bounds.intersects(r);
 	}
 
 	public Point getLocation() {
 		return location;
 	}
-	
-	public void move(){
+
+	public Rectangle getBounds() {
+		return bounds;
+	}
+
+	public void move() {
 		moveVertically(verticalSpeed);
 		moveHorizontally(horizontalSpeed);
 	}
-	
+
 	public void goRight() {
-		horizontalSpeed = shipSpeed;
+		horizontalSpeed = speed;
 	}
-	
-	public void goLeft(){
-		horizontalSpeed = shipSpeed;
+
+	public void goLeft() {
+		horizontalSpeed = -speed;
 	}
-	
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
 	public void stop() {
 		this.horizontalSpeed = 0;
 		this.verticalSpeed = 0;
 	}
 
 	public abstract String getImagePath();
-	
+
 	public Dimension getSize() {
 		return bounds.getSize();
 	}
-}
+
+	public void stopRight() {
+		if (horizontalSpeed > 0) {
+			horizontalSpeed = 0;
+		}
+	}
+
+	public void stopLeft() {
+		if (horizontalSpeed < 0) {
+			horizontalSpeed = 0;
+		}
+	}
+	
+	public int getHealth() {
+		return health;
+	}
+	
+	public void getHit() {
+		health -= 1;
+	}
+ }

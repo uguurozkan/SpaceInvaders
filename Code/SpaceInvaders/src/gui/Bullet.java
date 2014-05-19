@@ -17,16 +17,19 @@ public class Bullet extends JPanel {
 	private boolean direction;
 	private int second;
 	private final static int FREQ = 2;
+	BulletType type;
 
-	public Bullet(int xPos, int yPos, boolean direction) {
+	public Bullet(int xPos, int yPos, boolean direction, BulletType type) {
 		setBackground(Color.red);
 		setBounds(xPos, yPos, BULLET_WIDTH, BULLET_HEIGHT);
 		this.direction = direction;
+		this.type = type;
 	}
 
 	public boolean isInsidePanel(){
 		return getY()>0;
 	}
+	
 	public void move() {
 		second++;
 		if(second==FREQ){

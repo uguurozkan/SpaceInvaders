@@ -21,6 +21,7 @@ public class GamePanel extends JPanel {
 
 	private PlayerView playerView;
 	private Level level;
+	private boolean running = true;
 	CopyOnWriteArrayList<EntityView> entityViews;
 	CopyOnWriteArrayList<Bullet> bullets;
 
@@ -34,15 +35,18 @@ public class GamePanel extends JPanel {
 		bullets = new CopyOnWriteArrayList<Bullet>();
 	}
 
-	public void fireBullet(int xPos, int yPos) {
-		Bullet strayBullet = new Bullet(xPos, yPos, Bullet.UP);
-		bullets.add(strayBullet);
-		add(strayBullet);
+	public void addBullet(Bullet bullet) {
+		bullets.add(bullet);
+		try {
+			add(bullet);
+		} catch (Exception e) {
+			bullets.remove(bullet);
+		}
 	}
 
 	public void paintBarriers() {
 		for (Barrier barrier : level.getBarriers()) {
-			BarrierView barrierView = new BarrierView(barrier);
+			BarrierView barrierView = new BarrierView(barrier, this);
 			entityViews.add(barrierView);
 			add(barrierView);
 		}
@@ -50,7 +54,7 @@ public class GamePanel extends JPanel {
 
 	public void paintAliens() {
 		for (Alien alien : level.getAliens()) {
-			AlienView alienView = new AlienView(alien);
+			AlienView alienView = new AlienView(alien, this);
 			entityViews.add(alienView);
 			add(alienView);
 		}
@@ -59,36 +63,56 @@ public class GamePanel extends JPanel {
 
 	public void paintPlayer(Player player) {
 		if (playerView == null)
-			playerView = new PlayerView(player);
+			playerView = new PlayerView(player, this);
 		add(playerView);
 		playerView.requestFocus();
 		playerView.requestFocusInWindow();
-		playerView.addKeyListener(new KeyInputHandler(playerView, this));
+		playerView.addKeyListener(new KeyInputHandler(playerView));
 	}
 
 	public void run() {
+		moveEntities();
+		moveBullets();
+	}
+
+	private void moveEntities() {
+		for (EntityView entityView : entityViews) {
+			entityView.move();
+			entityView.fire();
+		}
+		playerView.move();
+	}
+
+	private void moveBullets() {
 		for (Bullet bullet : bullets) {
-			for (EntityView entityView : entityViews) {
-				try {
-					if (entityView.collide(bullet.getLocation())) {
-						entityViews.remove(entityView);
+			if (bullet.type == BulletType.PlayerBullet) {
+				for (EntityView entityView : entityViews) {
+					if (entityView.intersects(bullet.getBounds())) {
+						entityView.getHit();
 						removeBullet(bullet);
 					}
-				} catch (Exception e) {
-					continue;
+					if(entityView.getHealt() == 0) {
+						new Explosion(entityView).start();
+						entityViews.remove(entityView);
+					}
 				}
-
-			}
-			try {
-				if (bullet.isInsidePanel())
-					bullet.move();
-				else {
+			} else {
+				if (playerView.intersects(bullet.getBounds())) {
+					playerView.getHit();
 					removeBullet(bullet);
 				}
-			} catch (Exception e) {
-				continue;
+				if(playerView.getHealt() == 0) {
+					new Explosion(playerView).start();
+					entityViews.remove(playerView);
+					running = false;
+				}
 			}
 
+			if (bullet.isInsidePanel())
+				bullet.move();
+			else {
+				removeBullet(bullet);
+			}
 		}
 	}
 
@@ -97,6 +121,10 @@ public class GamePanel extends JPanel {
 		bullets.remove(bullet);
 		repaint();
 		revalidate();
+	}
+	
+	public boolean isRunning() {
+		return running;
 	}
 
 }
