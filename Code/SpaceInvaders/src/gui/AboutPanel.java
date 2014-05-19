@@ -3,21 +3,27 @@ package gui;
 import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import elements.BackButtonHandler;
+
 public class AboutPanel extends JPanel {
 	
-	private WelcomePanel welcomePanel;
+	private GameFrame gameFrame;
 
-	public AboutPanel(WelcomePanel welcomePanel) {
-		this.welcomePanel = welcomePanel;
+	public AboutPanel(GameFrame gameFrame) {
+		this.gameFrame = gameFrame;
 		setLayout(new BorderLayout());
-		add(new JLabel(new ImageIcon("Assets/about.jpg")));
+		add(new JLabel(new ImageIcon("Assets/about.jpg")),BorderLayout.CENTER);
+		JButton backButton=new JButton("Back");
+		backButton.addActionListener(new BackButtonHandler(gameFrame) );
+		add(backButton, BorderLayout.NORTH);
+		
 	}
 	
-	public void backToMenuClicked() {
-		welcomePanel.backToMenuClicked();
-	}
+	
 
+	
 }

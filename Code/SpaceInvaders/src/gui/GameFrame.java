@@ -13,6 +13,8 @@ public class GameFrame extends JFrame {
 	private GamePanel gamePanel;
 	private InfoPanel infoPanel;
 	private WelcomePanel welcomePanel;
+	private AboutPanel aboutPanel;
+	private HowToPanel howToPanel;
 
 	public static void main(String[] args) {
 		new GameFrame();
@@ -72,4 +74,30 @@ public class GameFrame extends JFrame {
 
 	}
 
+	public void aboutClicked() {
+		printAboutPanel();
+	}
+
+	private void printAboutPanel() {
+		if (aboutPanel == null)
+			aboutPanel = new AboutPanel(this);
+		printPanel(aboutPanel);
+		
+	}
+
+	public void backToMenuClicked() {
+		printPanel(welcomePanel);
+		
+		
+		
+	}
+
+	public void printHowToPanel() {
+		if (howToPanel == null)
+			howToPanel = new HowToPanel(this);
+		printPanel(howToPanel);
+		
+	}
+
+	
 }

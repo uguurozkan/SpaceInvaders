@@ -41,24 +41,15 @@ public class WelcomePanel extends JPanel {
 	}
 	
 	public void aboutClicked() {
-		printAboutPanel();
+		gameFrame.aboutClicked();
+		//printAboutPanel();
 	}
 	
 	public void howToClicked() {
-		printHowToPanel();
+		gameFrame.printHowToPanel();
 	}
 
-	private void printHowToPanel() {
-		if (howToPanel == null)
-			howToPanel = new HowToPanel(this);
-		printPanel(howToPanel);
-	}
 
-	private void printAboutPanel() {
-		if (aboutPanel == null)
-			aboutPanel = new AboutPanel(this);
-		printPanel(aboutPanel);
-	}
 
 	public void backToMenuClicked() {
 		printMenuPanel();
