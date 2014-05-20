@@ -114,4 +114,5 @@ public abstract class Entity {
 	public void getHit() {
 		health -= 1;
 	}
+
  }
