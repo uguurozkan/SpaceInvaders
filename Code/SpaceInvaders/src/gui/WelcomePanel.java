@@ -7,22 +7,22 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class WelcomePanel extends JPanel {
-	
+
 	private final int WIDTH = 900;
 	private final int HEIGHT = 550;
-	
+
 	private GameFrame gameFrame;
 	private MenuPanel menuPanel;
 	private AboutPanel aboutPanel;
 	private HowToPanel howToPanel;
-	
+
 	public WelcomePanel(GameFrame gameFrame) {
 		this.gameFrame = gameFrame;
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		printMenuPanel();
 	}
-	
+
 	private void printMenuPanel() {
 		if (menuPanel == null)
 			menuPanel = new MenuPanel(this);
@@ -39,17 +39,15 @@ public class WelcomePanel extends JPanel {
 	public void newGameClicked() {
 		gameFrame.newGameClicked();
 	}
-	
+
 	public void aboutClicked() {
 		gameFrame.aboutClicked();
-		//printAboutPanel();
+		// printAboutPanel();
 	}
-	
+
 	public void howToClicked() {
 		gameFrame.printHowToPanel();
 	}
-
-
 
 	public void backToMenuClicked() {
 		printMenuPanel();

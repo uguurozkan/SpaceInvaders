@@ -17,7 +17,7 @@ public class Bullet extends JPanel {
 	private boolean direction;
 	private int second;
 	private final static int FREQ = 2;
-	BulletType type;
+	private BulletType type;
 
 	public Bullet(int xPos, int yPos, boolean direction, BulletType type) {
 		setBackground(Color.red);
@@ -26,21 +26,25 @@ public class Bullet extends JPanel {
 		this.type = type;
 	}
 
-	public boolean isInsidePanel(){
-		return getY()>0;
+	public boolean isInsidePanel() {
+		return getY() > 0;
 	}
-	
+
 	public void move() {
 		second++;
-		if(second==FREQ){
+		if (second == FREQ) {
 			double speed = SPEED;
 			if (direction == UP)
 				speed *= -1;
 			setLocation(getX(), (int) (getY() + speed));
-			second =0;
+			second = 0;
 			repaint();
 			revalidate();
 		}
+	}
+
+	public BulletType getType() {
+		return this.type;
 	}
 
 }

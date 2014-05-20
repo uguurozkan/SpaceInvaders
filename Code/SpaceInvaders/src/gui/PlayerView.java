@@ -1,9 +1,6 @@
 package gui;
 
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
 
 import elements.Player;
 

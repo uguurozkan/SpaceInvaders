@@ -12,7 +12,6 @@ public abstract class Entity {
 	protected Rectangle bounds;
 
 	protected int speed;
-	
 	protected int health;
 
 	protected int horizontalSpeed;
@@ -106,13 +105,13 @@ public abstract class Entity {
 			horizontalSpeed = 0;
 		}
 	}
-	
+
 	public int getHealth() {
 		return health;
 	}
-	
+
 	public void getHit() {
 		health -= 1;
 	}
 
- }
+}

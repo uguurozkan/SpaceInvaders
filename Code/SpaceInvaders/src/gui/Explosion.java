@@ -44,8 +44,6 @@ public class Explosion implements Runnable {
 
 	private void changeFrame() {
 		entity.setEntityIcon("Assets/Explosion/explosion" + currentFrame + ".png");
-		// entity.repaint();
-		// entity.validate();
 		currentFrame++;
 	}
 

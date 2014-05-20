@@ -90,7 +90,7 @@ public class GamePanel extends JPanel {
 
 	private void moveBullets() {
 		for (Bullet bullet : bullets) {
-			if (bullet.type == BulletType.PlayerBullet) {
+			if (bullet.getType() == BulletType.PlayerBullet) {
 				for (EntityView entityView : entityViews) {
 					if (entityView.intersects(bullet.getBounds())) {
 						entityView.getHit();

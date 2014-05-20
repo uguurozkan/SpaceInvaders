@@ -24,9 +24,9 @@ public abstract class EntityView extends JLabel {
 		setTimer();
 	}
 
-
+	// Determines the bullet fire speed
 	private void setTimer() {
-		bulletTimer = new Timer(100, new ActionListener() {
+		bulletTimer = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				bulletTimer.stop();
@@ -41,7 +41,7 @@ public abstract class EntityView extends JLabel {
 	public boolean intersects(Entity other) {
 		return entity.intersects(other);
 	}
-	
+
 	public boolean intersects(Rectangle r) {
 		return entity.intersects(r);
 	}
@@ -50,22 +50,22 @@ public abstract class EntityView extends JLabel {
 		entity.move();
 		setBounds(entity.getBounds());
 	}
-	
+
 	public void fire() {
 		if (!bulletTimer.isRunning()) {
 			gamePanel.addBullet(getBullet());
 			bulletTimer.start();
 		}
 	}
-	
+
 	public void getHit() {
 		entity.getHit();
 	}
-	
+
 	public int getHealt() {
 		return entity.getHealth();
 	}
-	
-	public abstract Bullet getBullet(); 
+
+	public abstract Bullet getBullet();
 
 }

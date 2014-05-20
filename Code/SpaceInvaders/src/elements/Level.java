@@ -6,17 +6,16 @@ public class Level {
 	private ArrayList<Alien> aliens;
 	private ArrayList<Barrier> barriers;
 
-
 	public Level() {
 		aliens = new ArrayList<Alien>();
 		barriers = new ArrayList<Barrier>();
 	}
-	
+
 	public ArrayList<Alien> getAliens() {
 		return aliens;
 	}
-	
-	public ArrayList<Barrier> getBarriers(){
+
+	public ArrayList<Barrier> getBarriers() {
 		return barriers;
 	}
 

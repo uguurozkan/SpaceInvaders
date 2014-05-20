@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.Point;
-
 import javax.swing.ImageIcon;
 
 import elements.Barrier;
@@ -11,6 +9,7 @@ public class BarrierView extends EntityView {
 	public BarrierView(Barrier barrier, GamePanel gamePanel) {
 		super(barrier, gamePanel);
 	}
+
 	@Override
 	public Bullet getBullet() {
 		// TODO Auto-generated method stub
