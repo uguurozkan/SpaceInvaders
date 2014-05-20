@@ -26,7 +26,7 @@ public abstract class EntityView extends JLabel {
 
 	// Determines the bullet fire speed
 	private void setTimer() {
-		bulletTimer = new Timer(1000, new ActionListener() {
+		bulletTimer = new Timer(300, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				bulletTimer.stop();

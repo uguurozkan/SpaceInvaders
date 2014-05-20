@@ -10,7 +10,7 @@ import elements.Alien;
 public class AlienView extends EntityView {
 	private double fireChance = 0.0005;
 	private int alienIconTurn;
-	private final static int FREQ = 32;
+	private final static int FREQ = 100;
 	private int frequency;
 	private static Random random = new Random();
 
