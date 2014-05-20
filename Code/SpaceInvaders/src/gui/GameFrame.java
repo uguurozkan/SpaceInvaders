@@ -129,13 +129,22 @@ public class GameFrame extends JFrame {
 		label.setSize(500, 100);
 		gamePanel.add(label);
 	}
+	public void printWinLabel(){
+		JLabel label = new JLabel("You Win!!!");
+		label.setFont(new Font("Serif", Font.BOLD, 30));
+		label.setForeground(Color.WHITE);
+		label.setLocation(new Point((int) getBounds().getCenterX() - 100,
+				(int) getBounds().getCenterY() - 100));
+		label.setSize(500, 100);
+		gamePanel.add(label);
+	}
 
 	public void scoreUp() {
 		infoPanel.scoreUp();
 	}
 	
-	public void lifeDown() {
-		infoPanel.lifeDown();
+	public boolean lifeDown() {
+		return infoPanel.lifeDown();
 	}
 
 }

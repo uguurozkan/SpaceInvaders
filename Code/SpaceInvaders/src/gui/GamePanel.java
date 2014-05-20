@@ -25,6 +25,7 @@ public class GamePanel extends JPanel {
 	CopyOnWriteArrayList<EntityView> entityViews;
 	CopyOnWriteArrayList<Bullet> bullets;
 	private GameFrame gameFrame;
+	private int remainingAliens;
 
 	public GamePanel(GameFrame gameFrame) {
 		this.gameFrame = gameFrame;
@@ -59,7 +60,9 @@ public class GamePanel extends JPanel {
 			AlienView alienView = new AlienView(alien, this);
 			entityViews.add(alienView);
 			add(alienView);
+			remainingAliens++;
 		}
+		
 
 	}
 
@@ -93,6 +96,14 @@ public class GamePanel extends JPanel {
 						entityView.getHit();
 						removeBullet(bullet);
 						gameFrame.scoreUp();
+						if(entityView instanceof AlienView){
+							remainingAliens--;
+						if(remainingAliens==0){
+							running=false;
+							gameFrame.printWinLabel();
+						}
+						
+						}
 					}
 					if(entityView.getHealt() == 0) {
 						new Explosion(entityView).start();
@@ -103,7 +114,10 @@ public class GamePanel extends JPanel {
 				if (playerView.intersects(bullet.getBounds())) {
 					playerView.getHit();
 					removeBullet(bullet);
-					gameFrame.lifeDown();
+					if(!gameFrame.lifeDown()){
+						running=false;
+						gameFrame.printEndLabel();
+					}
 				}
 				if(playerView.getHealt() == 0) {
 					new Explosion(playerView).start();

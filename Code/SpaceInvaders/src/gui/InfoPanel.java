@@ -52,8 +52,12 @@ public class InfoPanel extends JPanel {
 		setScore(score + 1);
 	}
 
-	public void lifeDown() {
+	public boolean lifeDown() {
 		setLife(life - 1);
+		if(life==0){
+			return false;
+		}else{
+		return true;}
 	}
 
 }
