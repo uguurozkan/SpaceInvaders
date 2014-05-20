@@ -24,8 +24,10 @@ public class GamePanel extends JPanel {
 	private boolean running = true;
 	CopyOnWriteArrayList<EntityView> entityViews;
 	CopyOnWriteArrayList<Bullet> bullets;
+	private GameFrame gameFrame;
 
-	public GamePanel() {
+	public GamePanel(GameFrame gameFrame) {
+		this.gameFrame = gameFrame;
 		setLayout(null);
 		setSize(WIDTH, HEIGHT);
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -90,6 +92,7 @@ public class GamePanel extends JPanel {
 					if (entityView.intersects(bullet.getBounds())) {
 						entityView.getHit();
 						removeBullet(bullet);
+						gameFrame.scoreUp();
 					}
 					if(entityView.getHealt() == 0) {
 						new Explosion(entityView).start();
@@ -100,6 +103,7 @@ public class GamePanel extends JPanel {
 				if (playerView.intersects(bullet.getBounds())) {
 					playerView.getHit();
 					removeBullet(bullet);
+					gameFrame.lifeDown();
 				}
 				if(playerView.getHealt() == 0) {
 					new Explosion(playerView).start();

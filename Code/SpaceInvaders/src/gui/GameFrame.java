@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -47,7 +48,6 @@ public class GameFrame extends JFrame {
 
 	public void newGameClicked() {
 		printGamePanel();
-
 	}
 
 	private void printWelcomePanel() {
@@ -58,14 +58,23 @@ public class GameFrame extends JFrame {
 
 	private void printGamePanel() {
 		if (gamePanel == null)
-			gamePanel = new GamePanel();
+			gamePanel = new GamePanel(this);
 		printPanel(gamePanel);
 		gamePanel.paintAliens();
 		gamePanel.paintBarriers();
 		gamePanel.paintPlayer(createPlayer());
+		add(getInfoPanel(), BorderLayout.EAST);
+		repaint();
+		validate();
+		pack();
+		setVisible(true);
 		run();
-		// gamePanel.fireBullet(getWidth() / 2, getHeight() - 5); // this is for
-		// testing
+	}
+
+	private Component getInfoPanel() {
+		if (infoPanel == null)
+			infoPanel = new InfoPanel();
+		return infoPanel;
 	}
 
 	private Player createPlayer() {
@@ -109,7 +118,6 @@ public class GameFrame extends JFrame {
 		if (howToPanel == null)
 			howToPanel = new HowToPanel(this);
 		printPanel(howToPanel);
-
 	}
 
 	public void printEndLabel() {
@@ -120,6 +128,14 @@ public class GameFrame extends JFrame {
 				(int) getBounds().getCenterY() - 100));
 		label.setSize(500, 100);
 		gamePanel.add(label);
+	}
+
+	public void scoreUp() {
+		infoPanel.scoreUp();
+	}
+	
+	public void lifeDown() {
+		infoPanel.lifeDown();
 	}
 
 }
