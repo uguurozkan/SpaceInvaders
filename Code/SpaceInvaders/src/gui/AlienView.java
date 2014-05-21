@@ -13,7 +13,6 @@ public class AlienView extends EntityView {
 	private final static int FREQ = 100;
 	private int frequency;
 	private static Random random = new Random();
-
 	ImageIcon icon = new ImageIcon("Assets/Invaders/Invader0.png");
 
 	public AlienView(Alien alien, GamePanel gamePanel) {

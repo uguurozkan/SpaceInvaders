@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import elements.Alien;
 import elements.Barrier;
@@ -33,6 +34,7 @@ public class GamePanel extends JPanel {
 		setSize(WIDTH, HEIGHT);
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setBackground(Color.black);
+		setBorder(new LineBorder(Color.white));
 		level = LevelLoader.getInstance().loadNextLevel();
 		this.entityViews = new CopyOnWriteArrayList<EntityView>();
 		bullets = new CopyOnWriteArrayList<Bullet>();

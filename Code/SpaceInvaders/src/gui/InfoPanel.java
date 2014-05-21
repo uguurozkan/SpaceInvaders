@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class InfoPanel extends JPanel {
@@ -20,7 +21,8 @@ public class InfoPanel extends JPanel {
 
 	public InfoPanel() {
 		setLayout(new GridLayout(0, 1));
-		setBackground(Color.red);
+		setBackground(Color.BLACK);
+		setBorder(new LineBorder(Color.WHITE));
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setScore(0);
 		setLife(3);
