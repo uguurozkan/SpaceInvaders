@@ -6,15 +6,13 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 public abstract class Entity {
-
 	public static final int BASE_SIZE = 32;
 
 	private Point location;
 	protected Rectangle bounds;
 
-	protected int speed;
 	protected int health;
-
+	protected int speed;
 	protected int horizontalSpeed;
 	protected int verticalSpeed;
 

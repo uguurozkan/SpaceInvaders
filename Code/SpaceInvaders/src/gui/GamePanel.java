@@ -91,39 +91,11 @@ public class GamePanel extends JPanel {
 	private void moveBullets() {
 		for (Bullet bullet : bullets) {
 			if (bullet.getType() == BulletType.PlayerBullet) {
-				for (EntityView entityView : entityViews) {
-					if (entityView.intersects(bullet.getBounds())) {
-						entityView.getHit();
-						removeBullet(bullet);
-						gameFrame.scoreUp();
-						if (entityView instanceof AlienView) {
-							remainingAliens--;
-							if (remainingAliens == 0) {
-								running = false;
-								gameFrame.printWinLabel();
-							}
-
-						}
-					}
-					if (entityView.getHealt() == 0) {
-						new Explosion(entityView).start();
-						entityViews.remove(entityView);
-					}
-				}
+				alienGetHit(bullet);
+			} else if (bullet.getType() == BulletType.AlienBullet) {
+				playerGetHit(bullet);
 			} else {
-				if (playerView.intersects(bullet.getBounds())) {
-					playerView.getHit();
-					removeBullet(bullet);
-					if (!gameFrame.lifeDown()) {
-						running = false;
-						gameFrame.printEndLabel();
-					}
-				}
-				if (playerView.getHealt() == 0) {
-					new Explosion(playerView).start();
-					entityViews.remove(playerView);
-					running = false;
-				}
+				System.err.println("Another bullet type ???");
 			}
 
 			if (bullet.isInsidePanel())
@@ -131,6 +103,43 @@ public class GamePanel extends JPanel {
 			else {
 				removeBullet(bullet);
 			}
+		}
+	}
+
+	private void alienGetHit(Bullet bullet) {
+		for (EntityView entityView : entityViews) {
+			if (entityView.intersects(bullet.getBounds())) {
+				entityView.getHit();
+				removeBullet(bullet);
+				gameFrame.scoreUp();
+				if (entityView instanceof AlienView) {
+					remainingAliens--;
+					if (remainingAliens == 0) {
+						running = false;
+						gameFrame.printVictoryLabel();
+					}
+				}
+			}
+			if (entityView.getHealt() == 0) {
+				new Explosion(entityView).start();
+				entityViews.remove(entityView);
+			}
+		}
+	}
+
+	private void playerGetHit(Bullet bullet) {
+		if (playerView.intersects(bullet.getBounds())) {
+			playerView.getHit();
+			removeBullet(bullet);
+			if (!gameFrame.lifeDown()) {
+				running = false;
+				gameFrame.printDefeatLabel();
+			}
+		}
+		if (playerView.getHealt() == 0) {
+			new Explosion(playerView).start();
+			entityViews.remove(playerView);
+			running = false;
 		}
 	}
 

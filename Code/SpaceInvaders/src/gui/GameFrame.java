@@ -89,7 +89,7 @@ public class GameFrame extends JFrame {
 					gamePanel.run();
 				} else {
 					gameTimer.stop();
-					printEndLabel();
+					printDefeatLabel();
 				}
 			}
 		};
@@ -120,7 +120,7 @@ public class GameFrame extends JFrame {
 		printPanel(howToPanel);
 	}
 
-	public void printEndLabel() {
+	public void printDefeatLabel() {
 		JLabel label = new JLabel("You Lost!!!");
 		label.setFont(new Font("Serif", Font.BOLD, 30));
 		label.setForeground(Color.WHITE);
@@ -128,8 +128,10 @@ public class GameFrame extends JFrame {
 				(int) getBounds().getCenterY() - 100));
 		label.setSize(500, 100);
 		gamePanel.add(label);
+		// TODO ask for another game
 	}
-	public void printWinLabel(){
+
+	public void printVictoryLabel() {
 		JLabel label = new JLabel("You Win!!!");
 		label.setFont(new Font("Serif", Font.BOLD, 30));
 		label.setForeground(Color.WHITE);
@@ -137,12 +139,13 @@ public class GameFrame extends JFrame {
 				(int) getBounds().getCenterY() - 100));
 		label.setSize(500, 100);
 		gamePanel.add(label);
+		// TODO ask for another game
 	}
 
 	public void scoreUp() {
 		infoPanel.scoreUp();
 	}
-	
+
 	public boolean lifeDown() {
 		return infoPanel.lifeDown();
 	}

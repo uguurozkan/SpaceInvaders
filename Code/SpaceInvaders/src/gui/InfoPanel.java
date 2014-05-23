@@ -32,22 +32,36 @@ public class InfoPanel extends JPanel {
 
 	private void setLife(int life) {
 		this.life = life;
-		if (this.lifeLabel == null) {
-			this.lifeLabel = new JLabel("LIFE: " + life);
-			lifeLabel.setAlignmentX(JLabel.CENTER);
-			lifeLabel.setHorizontalAlignment(JLabel.CENTER);
-		} else
-			this.lifeLabel.setText("LIFE: " + life);
+		if (this.lifeLabel == null)
+			createLifeLabel(life);
+		else
+			setLabelText(lifeLabel, "LIFE: ", life);
+	}
+
+	private void createLifeLabel(int life) {
+		this.lifeLabel = new JLabel("LIFE: " + life);
+		lifeLabel.setForeground(Color.WHITE);
+		lifeLabel.setAlignmentX(JLabel.CENTER);
+		lifeLabel.setHorizontalAlignment(JLabel.CENTER);
+	}
+
+	private void setLabelText(JLabel label, String message, int value) {
+		label.setText(message + value);
 	}
 
 	private void setScore(int score) {
 		this.score = score;
-		if (this.scoreLabel == null) {
-			this.scoreLabel = new JLabel("SCORE: " + score);
-			scoreLabel.setAlignmentX(JLabel.CENTER);
-			scoreLabel.setHorizontalAlignment(JLabel.CENTER);
-		} else
-			this.scoreLabel.setText("SCORE: " + score);
+		if (this.scoreLabel == null)
+			createScoreLabel(score);
+		else
+			setLabelText(scoreLabel, "SCORE: ", score);
+	}
+
+	private void createScoreLabel(int score) {
+		this.scoreLabel = new JLabel("SCORE: " + score);
+		scoreLabel.setForeground(Color.WHITE);
+		scoreLabel.setAlignmentX(JLabel.CENTER);
+		scoreLabel.setHorizontalAlignment(JLabel.CENTER);
 	}
 
 	public void scoreUp() {
@@ -56,11 +70,7 @@ public class InfoPanel extends JPanel {
 
 	public boolean lifeDown() {
 		setLife(life - 1);
-		if (life == 0) {
-			return false;
-		} else {
-			return true;
-		}
+		return life == 0 ? false : true;
 	}
 
 }

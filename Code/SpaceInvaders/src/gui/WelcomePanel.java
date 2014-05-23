@@ -13,8 +13,6 @@ public class WelcomePanel extends JPanel {
 
 	private GameFrame gameFrame;
 	private MenuPanel menuPanel;
-	private AboutPanel aboutPanel;
-	private HowToPanel howToPanel;
 
 	public WelcomePanel(GameFrame gameFrame) {
 		this.gameFrame = gameFrame;
@@ -42,7 +40,6 @@ public class WelcomePanel extends JPanel {
 
 	public void aboutClicked() {
 		gameFrame.aboutClicked();
-		// printAboutPanel();
 	}
 
 	public void howToClicked() {

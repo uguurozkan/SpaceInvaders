@@ -11,6 +11,7 @@ import javax.swing.Timer;
 import elements.Entity;
 
 public abstract class EntityView extends JLabel {
+	private final int BULLET_FIRE_SPEED = 300;
 	private Timer bulletTimer;
 	protected Entity entity;
 	protected GamePanel gamePanel;
@@ -26,7 +27,7 @@ public abstract class EntityView extends JLabel {
 
 	// Determines the bullet fire speed
 	private void setTimer() {
-		bulletTimer = new Timer(300, new ActionListener() {
+		bulletTimer = new Timer(BULLET_FIRE_SPEED, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				bulletTimer.stop();
