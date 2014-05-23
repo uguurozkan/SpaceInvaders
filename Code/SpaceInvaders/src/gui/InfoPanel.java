@@ -32,21 +32,21 @@ public class InfoPanel extends JPanel {
 
 	private void setLife(int life) {
 		this.life = life;
-		if (this.lifeLabel == null){
+		if (this.lifeLabel == null) {
 			this.lifeLabel = new JLabel("LIFE: " + life);
 			lifeLabel.setAlignmentX(JLabel.CENTER);
 			lifeLabel.setHorizontalAlignment(JLabel.CENTER);
-		}else
+		} else
 			this.lifeLabel.setText("LIFE: " + life);
 	}
 
 	private void setScore(int score) {
 		this.score = score;
-		if (this.scoreLabel == null){
+		if (this.scoreLabel == null) {
 			this.scoreLabel = new JLabel("SCORE: " + score);
 			scoreLabel.setAlignmentX(JLabel.CENTER);
 			scoreLabel.setHorizontalAlignment(JLabel.CENTER);
-		}else
+		} else
 			this.scoreLabel.setText("SCORE: " + score);
 	}
 
@@ -56,10 +56,11 @@ public class InfoPanel extends JPanel {
 
 	public boolean lifeDown() {
 		setLife(life - 1);
-		if(life==0){
+		if (life == 0) {
 			return false;
-		}else{
-		return true;}
+		} else {
+			return true;
+		}
 	}
 
 }

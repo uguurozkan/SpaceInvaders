@@ -1,5 +1,6 @@
 package elements;
 
+import gui.GamePanel;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -37,7 +38,13 @@ public abstract class Entity {
 	}
 
 	public void moveHorizontally(double px) {
-		setLocation(location.getX() + px, location.getY());
+		if (isInBounds(px))
+			setLocation(location.getX() + px, location.getY());
+	}
+
+	private boolean isInBounds(double px) {
+		return (location.getX() + px) > 0
+				&& (location.getX() + px) < (GamePanel.WIDTH - BASE_SIZE);
 	}
 
 	public void moveVertically(double py) {

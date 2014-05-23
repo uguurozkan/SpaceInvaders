@@ -64,8 +64,6 @@ public class GamePanel extends JPanel {
 			add(alienView);
 			remainingAliens++;
 		}
-		
-
 	}
 
 	public void paintPlayer(Player player) {
@@ -98,16 +96,16 @@ public class GamePanel extends JPanel {
 						entityView.getHit();
 						removeBullet(bullet);
 						gameFrame.scoreUp();
-						if(entityView instanceof AlienView){
+						if (entityView instanceof AlienView) {
 							remainingAliens--;
-						if(remainingAliens==0){
-							running=false;
-							gameFrame.printWinLabel();
-						}
-						
+							if (remainingAliens == 0) {
+								running = false;
+								gameFrame.printWinLabel();
+							}
+
 						}
 					}
-					if(entityView.getHealt() == 0) {
+					if (entityView.getHealt() == 0) {
 						new Explosion(entityView).start();
 						entityViews.remove(entityView);
 					}
@@ -116,12 +114,12 @@ public class GamePanel extends JPanel {
 				if (playerView.intersects(bullet.getBounds())) {
 					playerView.getHit();
 					removeBullet(bullet);
-					if(!gameFrame.lifeDown()){
-						running=false;
+					if (!gameFrame.lifeDown()) {
+						running = false;
 						gameFrame.printEndLabel();
 					}
 				}
-				if(playerView.getHealt() == 0) {
+				if (playerView.getHealt() == 0) {
 					new Explosion(playerView).start();
 					entityViews.remove(playerView);
 					running = false;
@@ -142,7 +140,7 @@ public class GamePanel extends JPanel {
 		repaint();
 		revalidate();
 	}
-	
+
 	public boolean isRunning() {
 		return running;
 	}

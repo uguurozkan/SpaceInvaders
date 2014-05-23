@@ -20,6 +20,7 @@ public class Alien extends Entity {
 		if (counter == limit || counter == -limit) {
 			dir *= -1;
 		}
+
 		counter += dir;
 		if (dir == -1) {
 			goLeft();

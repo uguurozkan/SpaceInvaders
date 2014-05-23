@@ -1,10 +1,8 @@
 package gui;
 
 import java.awt.Color;
-import java.util.TimerTask;
 
 import javax.swing.JPanel;
-import javax.xml.ws.handler.MessageContext.Scope;
 
 public class Bullet extends JPanel {
 
