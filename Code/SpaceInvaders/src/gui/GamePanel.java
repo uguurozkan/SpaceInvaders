@@ -27,6 +27,7 @@ public class GamePanel extends JPanel {
 	CopyOnWriteArrayList<Bullet> bullets;
 	private GameFrame gameFrame;
 	private int remainingAliens;
+	public boolean win;
 
 	public GamePanel(GameFrame gameFrame) {
 		this.gameFrame = gameFrame;
@@ -38,6 +39,7 @@ public class GamePanel extends JPanel {
 		level = LevelLoader.getInstance().loadNextLevel();
 		this.entityViews = new CopyOnWriteArrayList<EntityView>();
 		bullets = new CopyOnWriteArrayList<Bullet>();
+		win=false;
 	}
 
 	public void addBullet(Bullet bullet) {
@@ -116,7 +118,9 @@ public class GamePanel extends JPanel {
 					remainingAliens--;
 					if (remainingAliens == 0) {
 						running = false;
-						gameFrame.printVictoryLabel();
+						win=true;
+						//gameFrame.printVictoryLabel();
+						
 					}
 				}
 			}
@@ -133,7 +137,8 @@ public class GamePanel extends JPanel {
 			removeBullet(bullet);
 			if (!gameFrame.lifeDown()) {
 				running = false;
-				gameFrame.printDefeatLabel();
+				win=false;
+				//gameFrame.printDefeatLabel();
 			}
 		}
 		if (playerView.getHealt() == 0) {

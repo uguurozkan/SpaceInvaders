@@ -8,8 +8,10 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -89,7 +91,12 @@ public class GameFrame extends JFrame {
 					gamePanel.run();
 				} else {
 					gameTimer.stop();
-					printDefeatLabel();
+					if(gamePanel.win){
+						printVictoryLabel();
+					}
+					else{
+						printDefeatLabel();
+					}
 				}
 			}
 		};
@@ -124,11 +131,20 @@ public class GameFrame extends JFrame {
 		JLabel label = new JLabel("You Lost!!!");
 		label.setFont(new Font("Serif", Font.BOLD, 30));
 		label.setForeground(Color.WHITE);
-		label.setLocation(new Point((int) getBounds().getCenterX() - 100,
+		label.setLocation(new Point((int) getBounds().getCenterX()-100,
 				(int) getBounds().getCenterY() - 100));
 		label.setSize(500, 100);
 		gamePanel.add(label);
-		// TODO ask for another game
+		int result = JOptionPane.showConfirmDialog(this, " Would you like to play again?","Game over!", JOptionPane.YES_NO_OPTION);
+			
+		if (result == JOptionPane.YES_OPTION) {
+				gamePanel=null;
+				infoPanel=null;
+				printGamePanel();
+				
+		} else {
+			System.exit(0);
+		}
 	}
 
 	public void printVictoryLabel() {
@@ -140,6 +156,15 @@ public class GameFrame extends JFrame {
 		label.setSize(500, 100);
 		gamePanel.add(label);
 		// TODO ask for another game
+		int result = JOptionPane.showConfirmDialog(this, " Would you like to play next level?","Victory!", JOptionPane.YES_NO_OPTION);
+		
+		if (result == JOptionPane.YES_OPTION) {
+				gamePanel=null;
+				printGamePanel();
+				
+		} else {
+			System.exit(0);
+		}
 	}
 
 	public void scoreUp() {

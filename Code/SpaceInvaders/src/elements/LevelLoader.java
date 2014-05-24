@@ -48,9 +48,9 @@ public class LevelLoader {
 	private ArrayList<char[]> readMapFile() {
 		Scanner fileScanner = null;
 		try {
-			fileScanner = new Scanner(new File("demoStage_" + (levelNo++) + ".txt"));
+			fileScanner = new Scanner(new File("demoStage_" + (levelNo) + ".txt"));//levelNo++
 		} catch (FileNotFoundException e) {
-			System.err.println("Couldn't read stage file");
+			System.err.println("Couldn't read stage file"+levelNo);
 			System.exit(1);
 		}
 
