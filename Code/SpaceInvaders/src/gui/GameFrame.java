@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import elements.LevelLoader;
 import elements.Player;
 
 @SuppressWarnings("serial")
@@ -138,6 +139,7 @@ public class GameFrame extends JFrame {
 		int result = JOptionPane.showConfirmDialog(this, " Would you like to play again?","Game over!", JOptionPane.YES_NO_OPTION);
 			
 		if (result == JOptionPane.YES_OPTION) {
+				LevelLoader.getInstance().reset();
 				gamePanel=null;
 				infoPanel=null;
 				printGamePanel();
@@ -159,6 +161,7 @@ public class GameFrame extends JFrame {
 		int result = JOptionPane.showConfirmDialog(this, " Would you like to play next level?","Victory!", JOptionPane.YES_NO_OPTION);
 		
 		if (result == JOptionPane.YES_OPTION) {
+				LevelLoader.getInstance().increaseLevel();
 				gamePanel=null;
 				printGamePanel();
 				

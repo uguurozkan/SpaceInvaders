@@ -9,7 +9,6 @@ public class LevelLoader {
 
 	private int levelNo;
 	private static LevelLoader instance;
-
 	private LevelLoader() {
 		levelNo = 0;
 		instance = this;
@@ -20,6 +19,12 @@ public class LevelLoader {
 			new LevelLoader();
 
 		return instance;
+	}
+	public void increaseLevel(){
+		levelNo++;
+	}
+	public void reset(){
+		levelNo=0;
 	}
 
 	public Level loadNextLevel() {
