@@ -126,6 +126,7 @@ public class GamePanel extends JPanel {
 			}
 			if (entityView.getHealt() == 0) {
 				new Explosion(entityView).start();
+				MusicPlayer.getInstance().playExplosionSound();
 				entityViews.remove(entityView);
 			}
 		}

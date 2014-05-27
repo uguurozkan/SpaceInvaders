@@ -18,7 +18,10 @@ public class Bullet extends JPanel {
 	private BulletType type;
 
 	public Bullet(int xPos, int yPos, boolean direction, BulletType type) {
-		setBackground(Color.red);
+		if (type == BulletType.AlienBullet)
+			setBackground(Color.white);
+		else
+			setBackground(Color.red);
 		setBounds(xPos, yPos, BULLET_WIDTH, BULLET_HEIGHT);
 		this.direction = direction;
 		this.type = type;

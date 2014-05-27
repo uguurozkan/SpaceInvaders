@@ -1,5 +1,6 @@
 package elements;
 
+import gui.MusicPlayer;
 import gui.PlayerView;
 
 import java.awt.event.KeyAdapter;
@@ -19,8 +20,10 @@ public class KeyInputHandler extends KeyAdapter {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 			playerView.goRight();
 
-		if (e.getKeyCode() == KeyEvent.VK_SPACE)
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			MusicPlayer.getInstance().playBulletSound();
 			playerView.fire();
+		}
 
 	}
 

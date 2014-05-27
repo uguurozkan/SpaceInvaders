@@ -1,5 +1,6 @@
 package gui;
 
+import java.applet.AudioClip;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -7,7 +8,12 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequence;
+import javax.sound.midi.Sequencer;
+import javax.sound.sampled.AudioPermission;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -50,6 +56,7 @@ public class GameFrame extends JFrame {
 	}
 
 	public void newGameClicked() {
+		MusicPlayer.getInstance();
 		printGamePanel();
 	}
 
